@@ -1918,6 +1918,19 @@ input, select, textarea {
 
 		}
 
+		@media screen and (max-width: 508px) {
+
+			input[type="submit"].primary,
+			input[type="reset"].primary,
+			input[type="button"].primary,
+			button.primary,
+			.button.primary {
+				min-width: 0;
+				margin-top: 3em;
+			}
+
+		}
+
 	input[type="submit"],
 	input[type="reset"],
 	input[type="button"],
@@ -2406,7 +2419,7 @@ input, select, textarea {
 
 		.image img {
 			border-radius: 8px;
-			display: run-in;
+			display: flex;
 		}
 
 		.image.left, .image.right {
@@ -3063,10 +3076,76 @@ input, select, textarea {
 		text-align: left;
 	}
 
-	.img-square-wrapper {
+	.card-text-alt {
+		text-align: center;
+	}
+
+	.img-square-wrapper{
 		vertical-align: bottom;
+	}
+
+	@media screen and (max-width: 900px) {
+
+		.card-horizontal{
+			-moz-flex-direction: column-reverse;
+			-webkit-flex-direction: column-reverse;
+			-ms-flex-direction: column-reverse;
+			flex-direction: column-reverse;
+			text-align: center;
+			position: relative;
+			height: 300px;
+			display: block;
+		}
+
+			.card-horizontal .card-text {
+				-moz-flex: 0 1 auto;
+				-webkit-flex: 0 1 auto;
+				-ms-flex: 0 1 auto;
+				flex: 1 1 auto;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+			}
+
+				.card-horizontal .card-text .card-title{
+					margin-left: auto;
+					margin-right: auto;
+					margin-bottom: 0;
+					position: absolute;
+					display: block;
+				}
+
+				.card-horizontal .card-text .img-square-wrapper {
+					-moz-justify-content: center;
+					-webkit-justify-content: center;
+					-ms-justify-content: center;
+					justify-content: center;
+					width: calc(100% + 1em);
+					display: block;
+					margin: auto;
+
+				}
+
+			.card-horizontal{
+				-moz-flex: 0 1 auto;
+				-webkit-flex: 0 1 auto;
+				-ms-flex: 0 1 auto;
+				flex: 0 1 auto;
+				margin-left: 0;
+				display: block;
+			}
+
+			.card-title{
+				margin-top: -100px;
+			}
+
+			.row {
+				margin-bottom: 9em;
+				display: block;
+			}
 
 	}
+
 
 /* Statistics */
 
