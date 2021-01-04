@@ -1925,7 +1925,7 @@ input, select, textarea {
 	.button {
 		background-color: transparent;
 		box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.35);
-		color: #ffffff !important;
+		color: #000000 !important; 
 	}
 
 		input[type="submit"]:hover,
@@ -1983,7 +1983,7 @@ input, select, textarea {
 			input[type="button"].primary.icon:before,
 			button.primary.icon:before,
 			.button.primary.icon:before {
-				color: #ffffff !important;
+				color: #000000 !important;
 			}
 			
 			input[type="submit"].secondary,
@@ -2002,8 +2002,7 @@ input, select, textarea {
 			button.secondary:hover,
 			.button.secondary:hover {
 				background-color: #89C2D9;
-				color: white !important;
-				font-weight:bold;
+				color: #000000 !important;
 			}
 
 			input[type="submit"].secondary:active,
@@ -2327,19 +2326,19 @@ input, select, textarea {
 			}
 
 		.icon.style1 {
-			color: #01497C;
+			color: #1b3b6f;
 		}
 
 		.icon.style2 {
-			color: #c79cc8;
+			color: #1b3b6f;
 		}
 
 		.icon.style3 {
-			color: #2C7DA0;
+			color: #065a82;
 		}
 
 		.icon.style4 {
-			color: #9bb2e1;
+			color: #1c7293;
 		}
 
 		.icon.style5 {
@@ -2407,7 +2406,7 @@ input, select, textarea {
 
 		.image img {
 			border-radius: 8px;
-			display: block;
+			display: run-in;
 		}
 
 		.image.left, .image.right {
@@ -2416,12 +2415,14 @@ input, select, textarea {
 
 			.image.left img, .image.right img {
 				width: 100%;
+				display: grid;
 			}
 
 		.image.left {
 			float: left;
 			margin: 0 1.5em 1em 0;
 			top: 0.25em;
+			display: block;
 		}
 
 		.image.right {
@@ -2684,7 +2685,15 @@ input, select, textarea {
 		text-align: center;
 	}
 
+	section.alt, article.alt {
+		text-align: left;
+	}
+
 	header.major {
+		margin-bottom: 3em;
+	}
+
+	header.minor {
 		margin-bottom: 3em;
 	}
 
@@ -2719,6 +2728,71 @@ input, select, textarea {
 				margin-left: auto;
 				margin-right: auto;
 			}
+
+			header.major h2 {
+			font-size: 2em;
+		}
+
+			header.major h2:after {
+				display: block;
+				content: '';
+				width: 3.25em;
+				height: 2px;
+				margin: 0.7em 0 1em 0;
+				border-radius: 2px;
+			}
+
+				section.special header.major h2:after, article.special header.major h2:after {
+					margin-left: auto;
+					margin-right: auto;
+				}
+
+		header.major p {
+			font-size: 1.25em;
+			letter-spacing: -0.025em;
+		}
+
+		header.major.special {
+			text-align: center;
+		}
+
+			header.major.special h2:after {
+				margin-left: auto;
+				margin-right: auto;
+			}
+
+			header.minor h2 {
+				font-size: 2em;
+			}
+	
+				header.minor h2:after {
+					display: block;
+					content: '';
+					width: 3.25em;
+					height: 2px;
+					margin: 0.7em 0 1em 0;
+					border-radius: 2px;
+				}
+	
+					section.special header.minor h2:after, article.special header.minor h2:after {
+						margin-left: auto;
+						margin-right: auto;
+						text-align: center;
+					}
+	
+			header.minor p {
+				font-size: 1.25em;
+				letter-spacing: -0.025em;
+			}
+	
+			header.minor.alt {
+				text-align: center;
+			}
+	
+				header.minor.alt h2:after {
+					margin-left: auto;
+					margin-right: auto;
+				}
 
 	footer.major {
 		margin-top: 3em;
@@ -2907,6 +2981,93 @@ input, select, textarea {
 
 		}
 
+
+/* Cards */
+
+.cards {
+	display: -moz-flex;
+	display: -webkit-flex;
+	display: -ms-flex;
+	display: flex;
+	-moz-flex-wrap: wrap;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	-moz-justify-content: center;
+	-webkit-justify-content: center;
+	-ms-justify-content: center;
+	justify-content: center;
+	width: calc(100% + 2em);
+	margin: 0 0 3em -2em;
+	padding: 10px;
+	list-style: none;	
+}
+
+	.cards li {
+		width: calc(33.33333% - 2em);
+		margin-left: 2em;
+		margin-top: 3em;
+		padding: 0;
+	}
+
+		.cards li:nth-child(1), .cards li:nth-child(2), .cards li:nth-child(3) {
+			margin-top: 0;
+		}
+
+		.cards li > :last-child {
+			margin-bottom: 0;
+		}
+
+	@media screen and (max-width: 980px) {
+
+		.cards li {
+			width: calc(50% - 2em);
+		}
+
+			.cards li:nth-child(3) {
+				margin-top: 3em;
+			}
+
+	}
+
+	@media screen and (max-width: 736px) {
+
+		.cards {
+			width: 100%;
+			margin: 0 0 2em 0;
+		}
+
+			.cards li {
+				width: 100%;
+				margin-left: 0;
+				margin-top: 2em;
+			}
+
+				.cards li:nth-child(2), .cards li:nth-child(3) {
+					margin-top: 2em;
+				}
+
+	}
+
+	.card-horizontal {
+		display: flex;
+		flex: 1 1 auto;
+		height: 250px;
+	}
+
+	.card-title {
+		text-align: center;
+	}
+
+	.card-text {
+		text-align: left;
+	}
+
+	.img-square-wrapper {
+		vertical-align: bottom;
+
+	}
+
 /* Statistics */
 
 	.statistics {
@@ -2936,15 +3097,15 @@ input, select, textarea {
 			}
 
 			.statistics li.style2 {
-				background-color: #c79cc8;
+				background-color: #0F3F74;
 			}
 
 			.statistics li.style3 {
-				background-color: #028090;
+				background-color: #155E8D;
 			}
 
 			.statistics li.style4 {
-				background-color: #9bb2e1;
+				background-color: #1B7CA5;
 			}
 
 			.statistics li.style5 {
@@ -3281,7 +3442,12 @@ input, select, textarea {
 		}
 
 		#nav a:hover {
-			color: #ffffff;
+			color: #000000;
+			background-color: #bdd5ea !important;
+		}
+
+		#nav a.active:hover {
+			color: #000000;
 			background-color: #bdd5ea !important;
 		}
 
@@ -3472,6 +3638,7 @@ input, select, textarea {
 				#main button.primary:hover,
 				#main .button.primary:hover {
 					background-color: #9acff2;
+					color: #000000 !important;
 				}
 
 				#main input[type="submit"].primary:active,
@@ -3639,6 +3806,14 @@ input, select, textarea {
 			background-image: linear-gradient(90deg, #012A4A, #468FAF, #89C2D9);
 		}
 
+		#main header.minor h2:after {
+			background-color: #dddddd;
+			background-image: -moz-linear-gradient(90deg, #012A4A, #468FAF, #89C2D9);
+			background-image: -webkit-linear-gradient(90deg, #012A4A, #468FAF, #89C2D9);
+			background-image: -ms-linear-gradient(90deg, #012A4A, #468FAF, #89C2D9);
+			background-image: linear-gradient(90deg, #012A4A, #468FAF, #89C2D9);
+		}
+
 		#main table tbody tr {
 			border-color: #dddddd;
 		}
@@ -3765,6 +3940,13 @@ input, select, textarea {
 						}
 
 		}
+
+			
+		.main.special.div.card {
+			background-color: #000000 !important;
+			}
+			
+
 
 /* Footer */
 
