@@ -3107,7 +3107,7 @@ input, select, textarea {
 				position: relative;
 			}
 
-				.card-horizontal .card-text .card-title{
+				.card-horizontal .card-text .card-title {
 					margin-left: auto;
 					margin-right: auto;
 					margin-bottom: 0;
@@ -3129,6 +3129,7 @@ input, select, textarea {
 			.img-square-wrapper {
 				display: block;
 			}
+
 
 
 			.card-horizontal{
