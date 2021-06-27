@@ -3698,6 +3698,8 @@ input, select, textarea {
 						box-shadow: inset 0 0 0 1px transparent;
 						color: #000000;
 						background-color: #bdd5ea !important;
+						box-shadow: inset 0 0 0 1px transparent;
+						width: fit-content;
 					  }
 					  
 					  /* Dropdown content (hidden by default) */
@@ -3714,6 +3716,7 @@ input, select, textarea {
 						transition: font-size 0.2s ease;
 						border-radius: 8px;
 						box-shadow: inset 0 0 0 1px transparent;
+						width: inherit;
 					  }
 					  
 					  /* Links inside the dropdown */
@@ -3724,19 +3727,21 @@ input, select, textarea {
 						text-decoration: none;
 						display: block;
 						text-align: left;
+						width: inherit;
 						
 					  }
 					  
 					  /* Add a grey background color to dropdown links on hover */
 					  .dropdown-content a:hover {
-						background-color: rgba(222, 222, 222, 0.25);
 						color: #000000;
 						background-color: #bdd5ea !important;
+						width: inherit;
 					  }
 					  
 					  /* Show the dropdown menu on hover */
 					  .dropdown:hover .dropdown-content {
 						display: block;
+						width: inherit;
 					  }
 
 		#nav.alt {
