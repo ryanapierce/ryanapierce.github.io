@@ -121,6 +121,25 @@ input, select, textarea {
 			-ms-transition: none !important;
 			transition: none !important;
 		}
+	
+	body.is-preloaded {
+		background-color: #222b13;
+		background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #4d602a 15%, #222b13 85%);
+		background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg, #4d602a 15%, #222b13 85%);
+		background-image: url("images/overlay.png"), -ms-linear-gradient(45deg, #4d602a 15%, #222b13 85%);
+		background-image: url("images/overlay.png"), linear-gradient(45deg, #4d602a 15%, #222b13 85%);
+	}
+
+		body.is-preloaded *, body.is-preloaded *:before, body.is-preloaded *:after {
+			-moz-animation: none !important;
+			-webkit-animation: none !important;
+			-ms-animation: none !important;
+			animation: none !important;
+			-moz-transition: none !important;
+			-webkit-transition: none !important;
+			-ms-transition: none !important;
+			transition: none !important;
+		}
 
 /* Type */
 
@@ -2711,6 +2730,10 @@ input, select, textarea {
 		margin-bottom: 3em;
 	}
 
+	header.majors {
+		margin-bottom: 3em;
+	}
+
 	header.minor {
 		margin-bottom: 3em;
 	}
@@ -2779,6 +2802,70 @@ input, select, textarea {
 				margin-right: auto;
 			}
 
+			header.majors h2 {
+				font-size: 2em;
+			}
+	
+				header.majors h2:after {
+					display: block;
+					content: '';
+					width: 3.25em;
+					height: 2px;
+					margin: 0.7em 0 1em 0;
+					border-radius: 2px;
+				}
+	
+					section.special header.majors h2:after, article.special header.majors h2:after {
+						margin-left: auto;
+						margin-right: auto;
+					}
+	
+			header.majors p {
+				font-size: 1.25em;
+				letter-spacing: -0.025em;
+			}
+	
+			header.majors.special {
+				text-align: center;
+			}
+	
+				header.majors.special h2:after {
+					margin-left: auto;
+					margin-right: auto;
+				}
+	
+				header.majors h2 {
+				font-size: 2em;
+			}
+	
+				header.majors h2:after {
+					display: block;
+					content: '';
+					width: 3.25em;
+					height: 2px;
+					margin: 0.7em 0 1em 0;
+					border-radius: 2px;
+				}
+	
+					section.special header.majors h2:after, article.special header.majors h2:after {
+						margin-left: auto;
+						margin-right: auto;
+					}
+	
+			header.majors p {
+				font-size: 1.25em;
+				letter-spacing: -0.025em;
+			}
+	
+			header.majors.special {
+				text-align: center;
+			}
+	
+				header.majors.special h2:after {
+					margin-left: auto;
+					margin-right: auto;
+				}
+
 			header.minor h2 {
 				font-size: 2em;
 			}
@@ -2835,6 +2922,22 @@ input, select, textarea {
 					display: none;
 				}
 
+		header.majors {
+			margin-bottom: 0;
+		}
+
+			header.majors h2 {
+				font-size: 1.5em;
+			}
+
+			header.majors p {
+				font-size: 1em;
+				letter-spacing: 0;
+			}
+
+				header.majors p br {
+					display: none;
+				}
 		footer.major {
 			margin-top: 0;
 		}
@@ -2842,6 +2945,10 @@ input, select, textarea {
 	}
 
 	header.major h2:after {
+		background-color: rgba(255, 255, 255, 0.35);
+	}
+
+	header.majors h2:after {
 		background-color: rgba(255, 255, 255, 0.35);
 	}
 
@@ -3359,6 +3466,10 @@ input, select, textarea {
 				margin: 0 0 2em 0;
 			}
 
+			.spotlight .content header.majors {
+				margin: 0 0 2em 0;
+			}
+
 		.spotlight .image {
 			display: inline-block;
 			margin-left: 4em;
@@ -3392,6 +3503,11 @@ input, select, textarea {
 				}
 
 					.spotlight .content header.major h2:after {
+						margin-left: auto;
+						margin-right: auto;
+					}
+
+					.spotlight .content header.majors h2:after {
 						margin-left: auto;
 						margin-right: auto;
 					}
@@ -3741,7 +3857,7 @@ input, select, textarea {
 					  /* Show the dropdown menu on hover */
 					  .dropdown:hover .dropdown-content {
 						display: block;
-						width: inherit;
+						width: inherit;	
 					  }
 
 		#nav.alt {
@@ -3884,25 +4000,23 @@ input, select, textarea {
 					color: #ffffff !important;
 				}
 
-				
-				
-
 				#main input[type="submit"].secondary,
-			#main input[type="reset"].secondary,
-			#main input[type="button"].secondary,
-			#main button.secondary,
-			#main .button.secondary {
-				background-color: #2A6F97;
-				color: #ffffff !important;
-				box-shadow: none;
-			}
+				#main input[type="reset"].secondary,
+				#main input[type="button"].secondary,
+				#main button.secondary,
+				#main .button.secondary {
+					background-color: #556b2f;
+					color: white !important;
+					box-shadow: none;
+				}
 
 				#main input[type="submit"].secondary:hover,
 				#main input[type="reset"].secondary:hover,
 				#main input[type="button"].secondary:hover,
 				#main button.secondary:hover,
 				#main .button.secondary:hover {
-					background-color: #9acff2;
+					background-color: #99a682;
+					color: black !important;
 				}
 
 				#main input[type="submit"].secondary:active,
@@ -3920,6 +4034,81 @@ input, select, textarea {
 				#main .button.secondary.icon:before {
 					color: #ffffff !important;
 				}
+
+				#main input[type="submit"].tertiary,
+				#main input[type="reset"].tertiary,
+				#main input[type="button"].tertiary,
+				#main button.tertiary,
+				#main .button.tertiary {
+					background-color: #556b2f;
+					color: white !important;
+					box-shadow: none;
+				}
+
+				#main input[type="submit"].tertiary:hover,
+				#main input[type="reset"].tertiary:hover,
+				#main input[type="button"].tertiary:hover,
+				#main button.tertiary:hover,
+				#main .button.tertiary:hover {
+					background-color: #99a682;
+					color: black !important;
+				}
+
+				#main input[type="submit"].tertiary:active,
+				#main input[type="reset"].tertiary:active,
+				#main input[type="button"].tertiary:active,
+				#main button.tertiary:active,
+				#main .button.tertiary:active {
+					background-color: #aab597;
+				}
+
+				#main input[type="submit"].tertiary.icon:before,
+				#main input[type="reset"].tertiary.icon:before,
+				#main input[type="button"].tertiary.icon:before,
+				#main button.tertiary.icon:before,
+				#main .button.tertiary.icon:before {
+					color: #ffffff !important;
+				}
+
+				#footer input[type="submit"].mil,
+				#footer input[type="reset"].mil,
+				#footer input[type="button"].mil,
+				#footer button.mil,
+				#footer .button.mil {
+					background-color: #2b3618 !important;
+					color: #ffffff !important;
+					box-shadow: none;
+				}
+
+				#footer input[type="submit"].mil:hover,
+				#footer input[type="reset"].mil:hover,
+				#footer input[type="button"].mil:hover,
+				#footer button.mil:hover,
+				#footer .button.mil:hover {
+					background-color: #778959 !important;
+					color: #000000 !important;
+				}
+
+				#footer input[type="submit"].mil:active,
+				#footer input[type="reset"].mil:active,
+				#footer input[type="button"].mil:active,
+				#footer button.mil:active,
+				#footer .button.mil:active {
+					background-color: #7ec3ee;
+				}
+
+				#footer input[type="submit"].mil.icon:before,
+				#footer input[type="reset"].mil.icon:before,
+				#footer input[type="button"].mil.icon:before,
+				#footer button.mil.icon:before,
+				#footer .button.mil.icon:before {
+					color: #ffffff !important;
+				}
+
+
+
+
+				
 
 		#main label {
 			color: #636363;
@@ -4039,6 +4228,23 @@ input, select, textarea {
 			background-image: -webkit-linear-gradient(90deg, #012A4A, #468FAF, #89C2D9);
 			background-image: -ms-linear-gradient(90deg, #012A4A, #468FAF, #89C2D9);
 			background-image: linear-gradient(90deg, #012A4A, #468FAF, #89C2D9);
+		}
+
+
+		#main header.majors h2:after {
+			background-color: #dddddd;
+			background-image: -moz-linear-gradient(90deg, #1a200e, #667a44, #99a682);
+			background-image: -webkit-linear-gradient(90deg, #1a200e, #667a44, #99a682);
+			background-image: -ms-linear-gradient(90deg, #1a200e, #667a44, #99a682);
+			background-image: linear-gradient(90deg, #1a200e, #667a44, #99a682);
+		}
+
+		#main header.minors h2:after {
+			background-color: #dddddd;
+			background-image: -moz-linear-gradient(90deg, #1a200e, #667a44, #99a682);
+			background-image: -webkit-linear-gradient(90deg, #1a200e, #667a44, #99a682);
+			background-image: -ms-linear-gradient(90deg, #1a200e, #667a44, #99a682);
+			background-image: linear-gradient(90deg, #1a200e, #667a44, #99a682);
 		}
 
 		#main table tbody tr {
