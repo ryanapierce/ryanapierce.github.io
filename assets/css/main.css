@@ -3135,6 +3135,10 @@ input, select, textarea {
 		padding: 0;
 	}
 
+	.img-square-wrapper img{
+		align-items: center;
+	}
+
 		.cards li:nth-child(1), .cards li:nth-child(2), .cards li:nth-child(3) {
 			margin-top: 0;
 		}
@@ -3186,6 +3190,11 @@ input, select, textarea {
 
 	.card-text {
 		text-align: left;
+	}
+
+	#ford.col-12.mt-3{
+		padding-bottom: 80px;
+		position: relative
 	}
 
 	.card-text-alt {
@@ -3612,6 +3621,10 @@ input, select, textarea {
 					padding: 6em 4em 3em 4em ;
 				}
 
+				#ford.col-12.mt-3{
+					padding-bottom: 20px;
+					position: relative
+				}
 		}
 
 		@media screen and (max-width: 980px) {
@@ -3622,6 +3635,20 @@ input, select, textarea {
 
 				#header.alt {
 					padding: 5em 3em 2em 3em ;
+				}
+			
+				#ford.col-12.mt-3{
+					padding-bottom: 20px;
+					position: relative
+				}
+
+		}
+
+		@media screen and (max-width: 980px) {
+				
+			.col-12.mt-3{
+					padding-bottom: 30px;
+					position: relative
 				}
 
 		}
