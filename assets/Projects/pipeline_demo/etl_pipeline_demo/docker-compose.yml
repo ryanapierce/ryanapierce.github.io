@@ -1,12 +1,35 @@
 version: '3.8'
 
 services:
+  postgres:
+    image: postgres:latest
+    container_name: airflow_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:latest
+    container_name: airflow_redis
+    restart: always
+    ports:
+      - "6379:6379"
+
   airflow:
     image: apache/airflow:latest
     container_name: airflow_etl
     restart: always
     environment:
-      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__CORE__EXECUTOR=CeleryExecutor
+      - AIRFLOW__CORE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres:5432/airflow
+      - AIRFLOW__CELERY__BROKER_URL=redis://redis:6379/0
+      - AIRFLOW__CELERY__RESULT_BACKEND=db+postgresql://airflow:airflow@postgres:5432/airflow
       - AIRFLOW__WEBSERVER__RBAC=True
       - AIRFLOW__CORE__LOAD_EXAMPLES=False
       - AIRFLOW__WEBSERVER__AUTH_BACKEND=airflow.contrib.auth.backends.password_auth
@@ -22,27 +45,16 @@ services:
       - "8080:8080"
     command: webserver
     depends_on:
-      - database
-
-  database:
-    image: postgres:latest
-    container_name: etl_postgres_db
-    restart: always
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: etl_pipeline
-    ports:
-      - "5432:5432"
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres
+      - redis
 
   etl_worker:
     build: .
     container_name: etl_worker
     restart: always
     depends_on:
-      - database
+      - postgres
+      - redis
     volumes:
       - .:/app
     command: python /app/airflow/dags/etl_dag.py
@@ -63,5 +75,3 @@ services:
 volumes:
   postgres_data:
   firebase_data:
-
-
