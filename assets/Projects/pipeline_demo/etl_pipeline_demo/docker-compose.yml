@@ -1,0 +1,60 @@
+version: '3.8'
+
+services:
+  airflow:
+    image: apache/airflow:latest
+    container_name: airflow_etl
+    restart: always
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=SequentialExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=sqlite:////opt/airflow/airflow.db
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/logs:/opt/airflow/logs
+      - ./airflow/plugins:/opt/airflow/plugins
+      - ./firebase/firebase_credentials.json:/opt/airflow/firebase_credentials.json 
+    ports:
+      - "8080:8080"
+    command: webserver
+
+  database:
+    image: postgres:latest
+    container_name: etl_postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: etl_pipeline
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  etl_worker:
+    build: .
+    container_name: etl_worker
+    restart: always
+    depends_on:
+      - database
+    volumes:
+      - .:/app
+    command: python /app/airflow/dags/etl_dag.py
+
+  firebase:
+    image: node:18  # Node.js is required for Firebase Emulator
+    container_name: firebase_rtdb_emulator
+    restart: always
+    volumes:
+      - ./firebase:/etl_pipeline_demo
+    working_dir: /etl_pipeline_demo
+    command: ["firebase", "emulators:start", "--only", "database,firestore,auth"]
+    ports:
+      - "8085:8085"  # Firestore emulator
+      - "9099:9099"  # Firebase Auth emulator
+      - "9000:9000"  # Realtime Database emulator
+
+volumes:
+  postgres_data:
+  firebase_data:
+
+
