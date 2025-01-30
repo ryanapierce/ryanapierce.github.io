@@ -24,7 +24,7 @@ keyring==25.6.0
 libcst==1.6.0
 numpy==2.2.2
 oauth2client==4.1.3
-Pillow==10.0.1
+Pillow==10.3.0
 Pillow==10.3.0
 pyodide==0.0.2
 pyOpenSSL==25.0.0
