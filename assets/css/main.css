@@ -2442,7 +2442,6 @@ input, select, textarea {
 	}
 
 		.image img {
-			border-radius: 8px;
 			display: flex;
 		}
 
@@ -2451,8 +2450,9 @@ input, select, textarea {
 		}
 
 			.image.left img, .image.right img {
-				width: 100%;
-				display: grid;
+				width: auto;
+    			height: 158px;
+				object-fit: cover;
 			}
 
 		.image.left {
@@ -2618,6 +2618,8 @@ input, select, textarea {
 
 			ul.actions.stacked li {
 				padding: 1.3em 0 0 0;
+				display: flex;
+    			justify-content: center;
 			}
 
 				ul.actions.stacked li:first-child {
