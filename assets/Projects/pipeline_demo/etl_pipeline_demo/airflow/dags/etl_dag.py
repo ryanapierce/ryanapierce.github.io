@@ -1,7 +1,7 @@
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from datetime import datetime, timedelta
-from api_extraction.extract import fetch_api_data, load_data_to_firebase
+from api_extraction.extract import fetch_yahoo_data, load_data_to_firebase
 from transformation.transform import process_data
 from database.load_data import load_to_db
 
@@ -17,7 +17,7 @@ default_args = {
 def fetch_data_dynamic(**kwargs):
     """Wrapper function to fetch data dynamically based on user input from Airflow UI."""
     symbols = kwargs.get('dag_run').conf.get('symbols', ["AAPL", "GOOGL", "MSFT"])
-    fetch_api_data(symbols)
+    fetch_yahoo_data(symbols)
 
 dag = DAG(
     'yahoo_finance_etl',
