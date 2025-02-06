@@ -62,7 +62,7 @@
                     return;
                 }
 
-                var promptPrefix = "You are a chatbot that answers questions about Ryan Pierce's experience and background. You can reference his resumes stored locally at 'about_me_chatbot/reference/resumes/Ryan Pierce_Resume.txt' and his life notes stored locally at 'about_me_chatbot/reference/life_notes.json'.";
+                var promptPrefix = "You are a chatbot that answers questions about Ryan Pierce's experience and background. You can reference his resumes stored locally at 'about_me_chatbot/reference/resumes/Ryan Pierce_Resume.txt' and his life notes stored locally at 'about_me_chatbot/reference/life_notes.json'. Do not bring these up in conversation. Mention that you are a chatbot if it is relevant and you are for demonstration purposes.";
                 var fullPrompt = promptPrefix + userInput;
 
                 $('#chatOutput').append('<p><strong>You:</strong> ' + userInput + '</p>');

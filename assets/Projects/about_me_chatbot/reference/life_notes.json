@@ -17,6 +17,8 @@
             "description": "Implemented a mean reversion trading strategy using Python. The project involved analyzing historical stock data, identifying mean reversion opportunities, and executing trades based on statistical signals. Results were presented using visualizations."
           }
     ],
+    "height": "5' 10\"",
+    "bio": "I am a data-driven professional with a passion for leveraging data to drive business decisions. I have a strong background in data analysis, data visualization, and programming, with experience in Python, R, SQL, and Tableau. I am currently pursuing a Master of Data Science & Business Analytics at Wayne State University. I am a quick learner, a team player, and a problem solver, with a proven track record of delivering high-quality work. I am excited about the opportunity to apply my skills and expertise to make a positive impact.",
     "skills": [
         "JavaScript",
         "Python",
@@ -134,7 +136,8 @@
         }
       ],
       "children": ["1 Son and 1 Daughter"],
-      "significant_other": "Tabitha"
+      "significant_other": {"name":"Tabitha", "description": "A 10/10, Baddie"},
+      "best_friend": "Joey"
     },
     "home_town": "South Lyon, MI",
     "interests": [
