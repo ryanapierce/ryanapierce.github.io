@@ -15,9 +15,14 @@ const port = process.env.PORT || 8080;
 app.use(cors());
 app.use(express.json());
 
-app.get('/config', (req, res) => {
-    res.json({ OPENAI_API_KEY: process.env.OPENAI_API_KEY });
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+    message: 'Too many requests from this IP, please try again after 15 minutes'
 });
+
+// Apply the rate limiting middleware to all requests
+app.use(limiter);
 
 app.post('/api/chat', async (req, res) => {
     const { messages } = req.body;
