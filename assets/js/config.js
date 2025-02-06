@@ -1,0 +1,1 @@
+const OPENAI_API_KEY = backend.env.OPENAI_API_KEY;
