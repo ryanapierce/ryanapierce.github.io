@@ -54,7 +54,13 @@
     </div>
 
     <script>
+        let OPENAI_API_KEY;
+
         $(document).ready(function() {
+            $.get('/config', function(data) {
+                OPENAI_API_KEY = data.OPENAI_API_KEY;
+            });
+            
             function sendMessage() {
                 var userInput = $('#userInput').val();
                 if (userInput.trim() === '') {
