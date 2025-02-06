@@ -82,7 +82,7 @@
                     success: function(response) {
                         console.log('Response:', response)
                         var botResponse = response.choices[0].message.content.trim();
-                        $('#chatOutput').append('<p><strong>Bot:</strong> ' + botResponse + '</p>');
+                        $('#chatOutput').append('<p><strong>Chatbot:</strong> ' + botResponse + '</p>');
                         $('#userInput').val('');
                     },
                     error: function(xhr, status, error) {
