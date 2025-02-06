@@ -73,7 +73,7 @@
                 $('#chatOutput').append('<p><strong>You:</strong> ' + userInput + '</p>');
 
                 $.ajax({
-                    url: 'https://about-me-chatbot-env.eba-rqjmzmz3.us-east-2.elasticbeanstalk.com',
+                    url: 'https://about-me-chatbot-env.eba-rqjmzmz3.us-east-2.elasticbeanstalk.com/api/chat',
                     type: 'POST',
                     contentType: 'application/json',
                     headers: {
@@ -82,7 +82,7 @@
                     data: JSON.stringify({
                         model: 'gpt-4o-mini',
                         messages: [{ role: 'user', content: fullPrompt }],
-                        max_tokens: 150
+                        max_tokens: 200
                     }),
                     success: function(response) {
                         console.log('Response:', response)
