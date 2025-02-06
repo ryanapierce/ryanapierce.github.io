@@ -138,7 +138,7 @@
         }
       ],
       "children": ["1 Son and 1 Daughter"],
-      "significant_other": {"name":"Tabitha", "description": "A 10/10, Baddie"},
+      "significant_other": {"name":"Tabitha", "title": "Girlfriend","description": "A 10/10, Baddie"},
       "best_friend": "Joey"
     },
     "home_town": "South Lyon, MI",
