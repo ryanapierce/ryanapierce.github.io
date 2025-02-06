@@ -68,7 +68,7 @@
                 $('#chatOutput').append('<p><strong>You:</strong> ' + userInput + '</p>');
 
                 $.ajax({
-                    url: 'https://api.openai.com/v1/completions',
+                    url: 'https://api.openai.com/v1/chat/completions',
                     type: 'POST',
                     contentType: 'application/json',
                     headers: {

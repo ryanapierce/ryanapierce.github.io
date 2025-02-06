@@ -1,0 +1,186 @@
+{
+    "personal_projects": [
+        {
+            "title": "Pair Trading Algorithm",
+            "description": "Developed an algorithm to identify suitable asset pairs using historical data from Yahoo Finance. The algorithm tracks price movements and calculates the spread to trigger trades when conditions are met. Results are visualized using line graphs and heatmaps."
+          },
+          {
+            "title": "R Dashboard",
+            "description": "Created a dashboard to visualize and streamline analysis of sales and marketing data at Ford Motor Company. Utilized the statistical programming language R to develop the dashboard, enabling better decision-making through data visualization."
+          },
+          {
+            "title": "Excel-based Lookup and Comparison Tool",
+            "description": "Developed a tracker during my time in ROTC at Eastern Michigan University to enable efficient lookup of each Cadet's gear/clothing record. The tool streamlined the process of managing and comparing inventory records."
+          },
+          {
+            "title": "Mean Reversion Analysis Project",
+            "description": "Implemented a mean reversion trading strategy using Python. The project involved analyzing historical stock data, identifying mean reversion opportunities, and executing trades based on statistical signals. Results were presented using visualizations."
+          }
+    ],
+    "skills": [
+        "JavaScript",
+        "Python",
+        "HTML",
+        "CSS",
+        "Data Analysis",
+        "Data Visualization",
+        "SQL",
+        "R",
+        "Excel",
+        "VBA",
+        "Git",
+        "Linux",
+        "Bash",
+        "Agile Methodologies",
+        "Kanban",
+        "JIRA",
+        "Confluence",
+        "Tableau",
+        "Power BI",
+        "Google Cloud Platform",
+        "Docker",
+        "CI/CD",
+        "Jenkins",
+        "Terraform",
+        "Spark",
+        "Hadoop",
+        "PostgreSQL",
+        "Microsoft SQL Server",
+        "BigQuery",
+        "Hive",
+        "Finance",
+        "Project Management",
+        "Leadership",
+        "Teamwork",
+        "Communication",
+        "Problem Solving",
+        "Critical Thinking",
+        "Time Management",
+        "Adaptability",
+        "Creativity",
+        "Attention to Detail",
+        "Organization",
+        "Military Budget & Finance",
+        "Military Leadership",
+        "Military Operations",
+        "Military Training",
+        "SAP",
+        "Prompt Engineering",
+        "LLM-integration"
+    ],
+    "hobbies": [
+      "Working Out",
+      "Staying Active",
+      "Spending time with family & friends",
+      "Playing Basketball",
+      "Playing Video Games",
+      "Playing Pickleball"
+    ],
+    "education": [{
+      "degree": "Master of Data Science & Business Analytics",
+      "school": "Wayne State University",
+      "graduation_year": 2026
+    },
+    {
+        "degree": "Bachelor of Business Administration in Accounting Informaiton Systems",
+        "school": "Eastern Michigan University",
+        "graduation_year": 2020
+      },
+    {
+      "degree": "Associate of Science in Criminal Justice",
+      "school": "Washtenaw Community College",
+      "graduation_year": 2017
+    }
+    ],  
+    "contact": {
+        "email": "rpierce521@gmail.com",
+        "phone": "248-378-7139",
+        "address": "Tecumseh, MI",
+        "website": "https://ryanpierce.dev/",
+        "linkedin": "https://www.linkedin.com/in/ryan-a-pierce/",
+        "github": "https://www.github.com/ryanapierce"
+    },
+    "birth_date": "1994-07-08",
+    "gender": "male",
+    "family": {
+      "parents": {
+        "father": "Raymond",
+        "mother": "Shelley"
+      },
+      "siblings": [
+        {
+          "name": "Brendan",
+          "relationship": "Brother"
+        },
+        {
+          "name": "Keeley",
+          "relationship": "Sister"
+        },
+        {
+          "name": "Marissa",
+          "relationship": "Sister"
+        },
+        {
+          "name": "Chelsea",
+          "relationship": "Sister"
+        },
+        {
+          "name": "Tiffany",
+          "relationship": "Sister"
+        },
+        {
+          "name": "Lindsey",
+          "relationship": "Sister"
+        }
+      ],
+      "children": ["1 Son and 1 Daughter"],
+      "significant_other": "Tabitha"
+    },
+    "home_town": "South Lyon, MI",
+    "interests": [
+      "Data Science",
+      "Spending time with family & friends",
+      "Programming",
+      "Self-improvement"
+    ],
+    "favorite_color": "Honolulu Blue",
+    "favorite_food": "Mediterranean",
+    "favorite_sports_teams": [
+      "Detroit Lions",
+      "Detroit Pistons",
+      "Detroit Tigers",
+      "Detroit Red Wings",
+      "Michigan Wolverines"
+    ],
+    "favorite_athletes": ["Barry Sanders",
+    "LeBron James"
+    ],
+    "favorite_movies": [
+      "Achorman",
+      "Soul"
+    ],
+    "favorite_video_game": [
+        "NBA 2K",
+        "Call of Duty",
+        "Madden"
+    ],
+    "favorite_music": [
+        "Eminem",
+        "Drake",
+        "J. Cole",
+        "Kendrick Lamar",
+        "Logic",
+        "Big Sean",
+        "Lil Wayne",
+        "Kanye West",
+        "Travis Scott",
+        "Kid Cudi",
+        "The Weeknd"
+    ],
+    "favorite_quotes": [
+      "The only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it. - Steve Jobs",
+      "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful. - Albert Schweitzer",
+      "The best way to predict the future is to invent it. - Alan Kay"
+    ]
+    
+  }
