@@ -101,7 +101,7 @@
             $('#sendButton').click(sendMessage);
 
             $('#userInput').keypress(function(event) {
-                if (event.which === 13 && !event.shiftKey) {
+                if (event.which === 10 && !event.shiftKey) {
                     event.preventDefault();
                     sendMessage();
                 }
