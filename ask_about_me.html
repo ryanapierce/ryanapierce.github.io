@@ -73,14 +73,14 @@
                 $('#chatOutput').append('<p><strong>You:</strong> ' + userInput + '</p>');
 
                 $.ajax({
-                    url: 'http://about-me-chatbot-env.eba-rqjmzmz3.us-east-2.elasticbeanstalk.com',
+                    url: 'https://about-me-chatbot-env.eba-rqjmzmz3.us-east-2.elasticbeanstalk.com',
                     type: 'POST',
                     contentType: 'application/json',
                     headers: {
                         'Authorization': 'Bearer ' + OPENAI_API_KEY
                     },
                     data: JSON.stringify({
-                        model: 'gpt-3.5-turbo',
+                        model: 'gpt-4o-mini',
                         messages: [{ role: 'user', content: fullPrompt }],
                         max_tokens: 150
                     }),
