@@ -80,7 +80,8 @@
                         max_tokens: 150
                     }),
                     success: function(response) {
-                        var botResponse = response.choices[0].text.trim();
+                        console.log('Response:', response)
+                        var botResponse = response.choices[0].message.content.trim();
                         $('#chatOutput').append('<p><strong>Bot:</strong> ' + botResponse + '</p>');
                         $('#userInput').val('');
                     },
