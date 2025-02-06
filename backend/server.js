@@ -27,6 +27,7 @@ app.post('/api/chat', async (req, res) => {
             model: 'gpt-4o-mini',
             store: true,
             messages: messages,
+            max_tokens: 200
         });
 
         res.json(response);
