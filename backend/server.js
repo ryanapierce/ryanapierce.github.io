@@ -9,6 +9,10 @@ const port = process.env.PORT || 8080;
 app.use(cors());
 app.use(express.json());
 
+app.get('/config', (req, res) => {
+    res.json({ OPENAI_API_KEY: process.env.OPENAI_API_KEY });
+});
+
 app.post('/api/chat', async (req, res) => {
     const { messages } = req.body;
 
