@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot - Ryan Pierce</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/config.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <header id="header">
+            <h1>Chat with Ryan Pierce's Experience Bot</h1>
+            <p>Ask about my experience and background.</p>
+        </header>
+        <div id="main">
+            <section id="content" class="main">
+                <textarea id="userInput" rows="4" placeholder="Type your question here..."></textarea>
+                <br>
+                <button id="sendButton" class="button primary">Ask</button>
+                <button id="clearButton" class="button primary">Clear Chat</button>
+                <div id="chatOutput"></div>
+            </section>
+            <ul class="actions stacked">
+                <li>
+                    <a href="index.html" class="button primary">Return to Homepage</a>
+                </li>
+            </ul>
+        </div>
+        <footer id="footer">
+            <section>
+                <br><br>
+                <ul class="actions">
+                    <li><a href="images/Ryan Pierce_Resume.pdf" class="button secondary">Click here for printable resume</a></li>
+                </ul>
+            </section>
+            <section>
+                <dl class="alt">
+                    <h2>Ryan Pierce</h2>
+                    <dt>Location</dt>
+                    <dd>Tecumseh, MI &bull; USA</dd>
+                    <dt>Phone</dt>
+                    <dd><a href="tel: 2483787139">(248) 378-7139</a></dd>
+                    <dt>Email</dt>
+                    <dd><a href="mailto: rpierce521@gmail.com">rpierce521@gmail.com</a></dd>
+
+                    <a href="https://www.linkedin.com/in/ryan-a-pierce" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
+                    <a href="https://github.com/ryanapierce" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
+                </dl>
+            </section>
+            <p class="copyright">&copy; Ryan Pierce. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+            </footer>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            function sendMessage() {
+                var userInput = $('#userInput').val();
+                if (userInput.trim() === '') {
+                    alert('Please enter a question or comment.');
+                    return;
+                }
+
+                var promptPrefix = "You are a chatbot that answers questions about Ryan Pierce's experience and background. You can reference his resumes stored locally at 'about_me_chatbot/reference/resumes/Ryan Pierce_Resume.txt' and his life notes stored locally at 'about_me_chatbot/reference/life_notes.json'.";
+                var fullPrompt = promptPrefix + userInput;
+
+                $('#chatOutput').append('<p><strong>You:</strong> ' + userInput + '</p>');
+
+                $.ajax({
+                    url: 'https://api.openai.com/v1/completions',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    headers: {
+                        'Authorization': 'Bearer ' + OPENAI_API_KEY
+                    },
+                    data: JSON.stringify({
+                        model: 'gpt-3.5-turbo',
+                        messages: [{ role: 'user', content: fullPrompt }],
+                        max_tokens: 150
+                    }),
+                    success: function(response) {
+                        var botResponse = response.choices[0].text.trim();
+                        $('#chatOutput').append('<p><strong>Bot:</strong> ' + botResponse + '</p>');
+                        $('#userInput').val('');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                        console.error('Status:', status);
+                        console.error('Response:', xhr.responseText);
+                        alert('Error communicating with the chatbot. Please check the console for more details.');
+                    }
+                });
+            }
+            $('#sendButton').click(sendMessage);
+
+            $('#userInput').keypress(function(event) {
+                if (event.which === 13 && !event.shiftKey) {
+                    event.preventDefault();
+                    sendMessage();
+                }
+            });
+
+            $('#clearButton').click(function() {
+                $('#chatOutput').empty();
+            });
+        });
+    </script>
+</body>
+</html>
