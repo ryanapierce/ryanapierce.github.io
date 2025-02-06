@@ -1,8 +1,8 @@
 
 
 from flask import Flask, request, jsonify
-from openai import OpenAI
 import os
+from openai import OpenAI
 from flask_cors import CORS
 
 app = Flask(__name__)
