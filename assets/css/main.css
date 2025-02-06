@@ -105,10 +105,10 @@ input, select, textarea {
 
 	body {
 		background-color: #012a4a;
-		background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #2c7da0 15%, #012a4a 85%);
-		background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg, #2c7da0 15%, #012a4a 85%);
-		background-image: url("images/overlay.png"), -ms-linear-gradient(45deg, #2c7da0 15%, #012a4a 85%);
-		background-image: url("images/overlay.png"), linear-gradient(45deg, #2c7da0 15%, #012a4a 85%);
+		background-image: url("assets/images/overlay.png"), -moz-linear-gradient(45deg, #2c7da0 15%, #012a4a 85%);
+		background-image: url("assets/images/overlay.png"), -webkit-linear-gradient(45deg, #2c7da0 15%, #012a4a 85%);
+		background-image: url("assets/images/overlay.png"), -ms-linear-gradient(45deg, #2c7da0 15%, #012a4a 85%);
+		background-image: url("assets/images/overlay.png"), linear-gradient(45deg, #2c7da0 15%, #012a4a 85%);
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -124,10 +124,10 @@ input, select, textarea {
 	
 	body.is-preloaded {
 		background-color: #222b13;
-		background-image: url("images/overlay.png"), -moz-linear-gradient(45deg, #4d602a 15%, #222b13 85%);
-		background-image: url("images/overlay.png"), -webkit-linear-gradient(45deg, #4d602a 15%, #222b13 85%);
-		background-image: url("images/overlay.png"), -ms-linear-gradient(45deg, #4d602a 15%, #222b13 85%);
-		background-image: url("images/overlay.png"), linear-gradient(45deg, #4d602a 15%, #222b13 85%);
+		background-image: url("assets/images/overlay.png"), -moz-linear-gradient(45deg, #4d602a 15%, #222b13 85%);
+		background-image: url("assets/images/overlay.png"), -webkit-linear-gradient(45deg, #4d602a 15%, #222b13 85%);
+		background-image: url("assets/images/overlay.png"), -ms-linear-gradient(45deg, #4d602a 15%, #222b13 85%);
+		background-image: url("assets/images/overlay.png"), linear-gradient(45deg, #4d602a 15%, #222b13 85%);
 	}
 
 		body.is-preloaded *, body.is-preloaded *:before, body.is-preloaded *:after {
