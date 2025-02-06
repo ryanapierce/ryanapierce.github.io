@@ -1,2 +1,4 @@
 # Ignore the config.js file containing the API key
 assets/js/config.js
+
+backend/.env
