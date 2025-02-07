@@ -2,6 +2,7 @@
 
 from flask import Flask, request, jsonify, render_template
 import os
+import json
 import openai
 from flask_cors import CORS
 import boto3
@@ -19,13 +20,12 @@ def get_openai_api_key():
     client = session.client(service_name="secretsmanager", region_name=region_name)
 
     try:
-        get_secret_value_response = client.get_secret_value(SecretId=secret_name)
+        secret = client.get_secret_value(SecretId=secret_name)
     except ClientError as e:
         raise e
 
     # Decrypts secret using the associated KMS key.
-    secret = get_secret_value_response['SecretString']
-    return secret
+    return json.loads(secret["SecretString"])["OPENAI_API_KEY"]
 
 openai.api_key = get_openai_api_key()
 
