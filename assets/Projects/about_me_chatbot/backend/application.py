@@ -21,7 +21,7 @@ logging.basicConfig(
 
 # AWS Secrets Manager configuration
 AWS_REGION = "us-east-1"  # Change to your region
-SECRET_NAME = "OpenAI_API_Key"  # Change to the name of your secret
+SECRET_NAME = "OPENAI_API_KEY"  # Change to the name of your secret
 
 def get_openai_api_key():
     """Fetch OpenAI API key from AWS Secrets Manager"""
