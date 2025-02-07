@@ -1,6 +1,6 @@
 
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import os
 import openai
 from flask_cors import CORS
@@ -29,7 +29,11 @@ def get_openai_api_key():
 
 openai.api_key = get_openai_api_key()
 
-@app.route('/chat', methods=['POST'])
+@app.route('/')
+def index():
+    return render_template('ask_about_me.html')
+
+@app.route('/api/chat', methods=['POST'])
 def chat():
     data = request.json
     messages = data.get('messages', [])
@@ -41,8 +45,9 @@ def chat():
             max_tokens=200
         )
         return jsonify(response.choices[0].message['content'])
+    
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    app.run(debug=True)
