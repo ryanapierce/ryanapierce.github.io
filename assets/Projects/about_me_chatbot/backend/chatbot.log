@@ -204,3 +204,103 @@ AttributeError: module 'openai' has no attribute 'error'
 2025-02-08 00:13:39,789 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
 2025-02-08 00:13:40,139 - WARNING -  * Debugger is active!
 2025-02-08 00:13:40,160 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:14:06,315 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:14:06,756 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-08 00:14:06,756 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-08 00:14:06,757 - INFO -  * Restarting with stat
+2025-02-08 00:14:07,245 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:14:07,586 - WARNING -  * Debugger is active!
+2025-02-08 00:14:07,606 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:14:14,265 - INFO - User [127.0.0.1] Input: Hello
+2025-02-08 00:14:14,530 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-02-08 00:14:14,534 - ERROR - OpenAI API Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: JYmXRFP7************************************************************************************************************************************************3x8A. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-02-08 00:14:14,535 - INFO - 127.0.0.1 - - [08/Feb/2025 00:14:14] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2025-02-08 00:23:19,651 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:23:20,062 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-08 00:23:20,062 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-08 00:23:20,063 - INFO -  * Restarting with stat
+2025-02-08 00:23:20,574 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:23:20,934 - WARNING -  * Debugger is active!
+2025-02-08 00:23:20,958 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:23:25,005 - INFO - User [127.0.0.1] Input: Hello
+2025-02-08 00:23:26,356 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-08 00:23:26,362 - INFO - User [127.0.0.1] Chatbot Response: Hello! How can I assist you with information about Ryan Pierce?
+2025-02-08 00:23:26,363 - INFO - 127.0.0.1 - - [08/Feb/2025 00:23:26] "POST /api/chat HTTP/1.1" 200 -
+2025-02-08 00:26:34,931 - INFO - 127.0.0.1 - - [08/Feb/2025 00:26:34] "[31m[1mGET /api/chat HTTP/1.1[0m" 405 -
+2025-02-08 00:27:21,364 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
+2025-02-08 00:27:21,493 - INFO -  * Restarting with stat
+2025-02-08 00:28:49,553 - INFO -  * Restarting with stat
+2025-02-08 00:28:50,582 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:28:50,995 - WARNING -  * Debugger is active!
+2025-02-08 00:28:51,018 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:31:59,046 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
+2025-02-08 00:31:59,170 - INFO -  * Restarting with stat
+2025-02-08 00:31:59,929 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:32:00,346 - WARNING -  * Debugger is active!
+2025-02-08 00:32:00,370 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:32:23,774 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
+2025-02-08 00:32:23,884 - INFO -  * Restarting with stat
+2025-02-08 00:32:25,061 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:32:25,394 - WARNING -  * Debugger is active!
+2025-02-08 00:32:25,415 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:35:22,187 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:35:22,608 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-08 00:35:22,608 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-08 00:35:22,609 - INFO -  * Restarting with stat
+2025-02-08 00:35:23,550 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:35:23,892 - WARNING -  * Debugger is active!
+2025-02-08 00:35:23,916 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:35:41,797 - INFO - 127.0.0.1 - - [08/Feb/2025 00:35:41] "[33mGET / HTTP/1.1[0m" 404 -
+2025-02-08 00:35:48,582 - INFO - 127.0.0.1 - - [08/Feb/2025 00:35:48] "[33mGET / HTTP/1.1[0m" 404 -
+2025-02-08 00:36:20,051 - INFO - User [127.0.0.1] Input: Hello
+2025-02-08 00:36:21,771 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-08 00:36:21,778 - INFO - User [127.0.0.1] Chatbot Response: Hello! How can I assist you today?
+2025-02-08 00:36:21,779 - INFO - 127.0.0.1 - - [08/Feb/2025 00:36:21] "POST /api/chat HTTP/1.1" 200 -
+2025-02-08 00:36:21,811 - INFO - User [127.0.0.1] Input: Hello
+2025-02-08 00:36:23,318 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-08 00:36:23,319 - INFO - User [127.0.0.1] Chatbot Response: Hello! How may I assist you today? If you have any queries related to my creator, Ryan Pierce, his career, or his skillset, feel free to ask.
+2025-02-08 00:36:23,319 - INFO - 127.0.0.1 - - [08/Feb/2025 00:36:23] "POST /api/chat HTTP/1.1" 200 -
+2025-02-08 00:36:23,351 - INFO - User [127.0.0.1] Input: Hello
+2025-02-08 00:36:23,928 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-08 00:36:23,931 - INFO - User [127.0.0.1] Chatbot Response: Hello! How can I assist you today?
+2025-02-08 00:36:23,932 - INFO - 127.0.0.1 - - [08/Feb/2025 00:36:23] "POST /api/chat HTTP/1.1" 200 -
+2025-02-08 00:36:23,963 - INFO - User [127.0.0.1] Input: Hello
+2025-02-08 00:36:24,751 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-08 00:36:24,752 - INFO - User [127.0.0.1] Chatbot Response: Hello! How can I assist you today?
+2025-02-08 00:36:24,752 - INFO - 127.0.0.1 - - [08/Feb/2025 00:36:24] "POST /api/chat HTTP/1.1" 200 -
+2025-02-08 00:36:24,783 - INFO - User [127.0.0.1] Input: Hello
+2025-02-08 00:36:26,490 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-08 00:36:26,491 - INFO - User [127.0.0.1] Chatbot Response: Hello! How can I assist you today?
+2025-02-08 00:36:26,491 - INFO - 127.0.0.1 - - [08/Feb/2025 00:36:26] "POST /api/chat HTTP/1.1" 200 -
+2025-02-08 00:36:26,526 - INFO - ratelimit 5 per 1 minute (127.0.0.1) exceeded at endpoint: chat
+2025-02-08 00:36:26,526 - INFO - 127.0.0.1 - - [08/Feb/2025 00:36:26] "[31m[1mPOST /api/chat HTTP/1.1[0m" 429 -
+2025-02-08 00:37:35,098 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
+2025-02-08 00:37:35,503 - INFO -  * Restarting with stat
+2025-02-08 00:37:36,620 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:37:37,178 - WARNING -  * Debugger is active!
+2025-02-08 00:37:37,212 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:38:41,258 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
+2025-02-08 00:38:41,635 - INFO -  * Restarting with stat
+2025-02-08 00:38:44,053 - INFO -  * Restarting with stat
+2025-02-08 00:38:45,029 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:38:45,446 - WARNING -  * Debugger is active!
+2025-02-08 00:38:45,466 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:59:49,465 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
+2025-02-08 00:59:49,926 - INFO -  * Restarting with stat
+2025-02-08 00:59:51,248 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:59:51,651 - WARNING -  * Debugger is active!
+2025-02-08 00:59:51,683 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 01:00:10,008 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
+2025-02-08 01:00:10,423 - INFO -  * Restarting with stat
+2025-02-08 01:00:11,465 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 01:00:11,812 - WARNING -  * Debugger is active!
+2025-02-08 01:00:11,837 - INFO -  * Debugger PIN: 822-635-497

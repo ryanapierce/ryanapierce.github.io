@@ -1,26 +1,41 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import openai
 import os
 import logging
 import boto3
 import json
+import watchtower  # CloudWatch logging
 from botocore.exceptions import NoCredentialsError, PartialCredentialsError
 from flask_cors import CORS
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 
 # Initialize Flask app
-application = Flask(__name__)
+application = Flask(__name__, static_folder="static", template_folder="templates")
 CORS(application)
 
-# Setup logging
+# Setup rate limiter (limits each IP to 5 requests per minute)
+limiter = Limiter(
+    get_remote_address,
+    app=application,
+    default_limits=["5 per minute"],
+    storage_uri="memory://"
+)
+
+# Setup logging (Logs to file & AWS CloudWatch)
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[logging.FileHandler("chatbot.log"), logging.StreamHandler()]
+    handlers=[
+        logging.FileHandler("chatbot.log"),
+        logging.StreamHandler(),
+        watchtower.CloudWatchLogHandler(log_group="chatbot-logs", stream_name="chatbot-app")
+    ]
 )
 
 # AWS Secrets Manager configuration
-AWS_REGION = "us-east-1"  # Change to your AWS region
-SECRET_NAME = "OPENAI_API_KEY"  # Change to the actual secret name
+AWS_REGION = "us-east-1"
+SECRET_NAME = "OPENAI_API_KEY"
 
 def get_openai_api_key():
     """Fetch OpenAI API key from AWS Secrets Manager"""
@@ -29,12 +44,6 @@ def get_openai_api_key():
         client = session.client(service_name="secretsmanager", region_name=AWS_REGION)
         secret_value = client.get_secret_value(SecretId=SECRET_NAME)
         return json.loads(secret_value["SecretString"])["OPENAI_API_KEY"]
-    except NoCredentialsError:
-        logging.error("AWS credentials not found.")
-        return None
-    except PartialCredentialsError:
-        logging.error("Incomplete AWS credentials.")
-        return None
     except Exception as e:
         logging.error(f"Error fetching secret: {str(e)}")
         return None
@@ -44,15 +53,20 @@ openai_api_key = get_openai_api_key()
 if not openai_api_key:
     logging.error("OpenAI API key could not be retrieved.")
 else:
-    openai_client = openai.OpenAI(api_key=openai_api_key)  # Initialize OpenAI client
+    openai_client = openai.OpenAI(api_key=openai_api_key)
 
+# Serve Home Page
+@application.route("/")
+def home():
+    return render_template("ask_about_me.html")  # Ensure your HTML is inside `templates/`
+
+# Chatbot API with rate limiting
 @application.route("/api/chat", methods=["POST"])
+@limiter.limit("5 per minute")  # Rate limiting: Max 5 requests per minute per user
 def chat():
     """Handles user input and returns chatbot response"""
     try:
         data = request.get_json()
-
-        # Validate request payload
         if not data or "messages" not in data or not data["messages"]:
             logging.warning(f"Invalid request received: {data}")
             return jsonify({"error": "Invalid request format"}), 400
@@ -65,7 +79,7 @@ def chat():
         user_ip = request.remote_addr
         logging.info(f"User [{user_ip}] Input: {user_input}")
 
-        # OpenAI API request (Updated to OpenAI v1 format)
+        # OpenAI API request
         response = openai_client.chat.completions.create(
             model="gpt-4",
             messages=[
