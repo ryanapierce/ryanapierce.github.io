@@ -1,0 +1,29 @@
+2025-02-07 23:14:23,835 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-07 23:14:30,913 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-07 23:14:31,213 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-07 23:14:31,213 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-07 23:18:07,238 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-07 23:18:07,621 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-07 23:18:07,621 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-07 23:18:58,625 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-07 23:18:58,929 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-07 23:18:58,929 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-07 23:19:06,866 - INFO - 127.0.0.1 - - [07/Feb/2025 23:19:06] "[33mGET / HTTP/1.1[0m" 404 -
+2025-02-07 23:20:11,693 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-07 23:20:50,236 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-07 23:20:50,546 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-07 23:20:50,546 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-07 23:21:00,592 - WARNING - Received empty user message.
+2025-02-07 23:21:00,592 - INFO - 127.0.0.1 - - [07/Feb/2025 23:21:00] "[31m[1mPOST /api/chat HTTP/1.1[0m" 400 -

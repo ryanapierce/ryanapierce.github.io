@@ -14,14 +14,14 @@ CORS(application)
 
 # Setup logging
 logging.basicConfig(
-    level=logging.INFO, 
+    level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
     handlers=[logging.FileHandler("chatbot.log"), logging.StreamHandler()]
 )
 
 # AWS Secrets Manager configuration
-AWS_REGION = "us-east-1"  # Change to your region
-SECRET_NAME = "OPENAI_API_KEY"  # Change to the name of your secret
+AWS_REGION = "us-east-1"  # Change to your AWS region
+SECRET_NAME = "OPENAI_API_KEY"  # Change to the actual secret name
 
 def get_openai_api_key():
     """Fetch OpenAI API key from AWS Secrets Manager"""
@@ -49,12 +49,20 @@ if not openai.api_key:
 def chat():
     """Handles user input and returns chatbot response"""
     try:
-        user_input = request.json.get("message", "").strip()
+        data = request.get_json()
+
+        # Validate request payload
+        if not data or "messages" not in data or not data["messages"]:
+            logging.warning(f"Invalid request received: {data}")
+            return jsonify({"error": "Invalid request format"}), 400
+
+        user_input = data["messages"][0].get("content", "").strip()
         if not user_input:
             logging.warning("Received empty user message.")
             return jsonify({"error": "Empty message"}), 400
 
-        logging.info(f"User Input: {user_input}")
+        user_ip = request.remote_addr
+        logging.info(f"User [{user_ip}] Input: {user_input}")
 
         # OpenAI API request
         response = openai.ChatCompletion.create(
@@ -67,13 +75,17 @@ def chat():
         )
 
         chatbot_reply = response["choices"][0]["message"]["content"]
-        logging.info(f"Chatbot Response: {chatbot_reply}")
+        logging.info(f"User [{user_ip}] Chatbot Response: {chatbot_reply}")
 
         return jsonify({"response": chatbot_reply})
 
+    except openai.error.OpenAIError as e:
+        logging.error(f"OpenAI API Error: {str(e)}")
+        return jsonify({"error": "Chatbot service is currently unavailable"}), 500
+
     except Exception as e:
-        logging.error(f"Chatbot API Error: {str(e)}")
+        logging.error(f"Unexpected Error: {str(e)}")
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    application.run(host="0.0.0.0", port=5000)
+    application.run(host="0.0.0.0", port=8080)
