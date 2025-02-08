@@ -304,3 +304,23 @@ AttributeError: module 'openai' has no attribute 'error'
 2025-02-08 01:00:11,465 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
 2025-02-08 01:00:11,812 - WARNING -  * Debugger is active!
 2025-02-08 01:00:11,837 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 01:00:41,668 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 01:00:49,545 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 01:00:49,928 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-08 01:00:49,929 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-08 01:00:49,930 - INFO -  * Restarting with stat
+2025-02-08 01:00:50,834 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 01:00:51,220 - WARNING -  * Debugger is active!
+2025-02-08 01:00:51,242 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 01:00:53,248 - INFO - 127.0.0.1 - - [08/Feb/2025 01:00:53] "GET / HTTP/1.1" 200 -
+2025-02-08 01:00:53,266 - INFO - 127.0.0.1 - - [08/Feb/2025 01:00:53] "GET /static/css/noscript.css HTTP/1.1" 200 -
+2025-02-08 01:00:53,266 - INFO - 127.0.0.1 - - [08/Feb/2025 01:00:53] "GET /static/css/main.css HTTP/1.1" 200 -
+2025-02-08 01:00:53,271 - INFO - 127.0.0.1 - - [08/Feb/2025 01:00:53] "GET /static/css/fontawesome-all.min.css HTTP/1.1" 200 -
+2025-02-08 01:00:53,294 - INFO - 127.0.0.1 - - [08/Feb/2025 01:00:53] "[33mGET /static/css/images/overlay.png HTTP/1.1[0m" 404 -
+2025-02-08 01:00:53,295 - INFO - 127.0.0.1 - - [08/Feb/2025 01:00:53] "[33mGET /static/webfonts/fa-brands-400.woff2 HTTP/1.1[0m" 404 -
+2025-02-08 01:00:53,304 - INFO - 127.0.0.1 - - [08/Feb/2025 01:00:53] "[33mGET /static/webfonts/fa-brands-400.woff HTTP/1.1[0m" 404 -
+2025-02-08 01:00:53,307 - INFO - 127.0.0.1 - - [08/Feb/2025 01:00:53] "[33mGET /static/webfonts/fa-brands-400.ttf HTTP/1.1[0m" 404 -
+2025-02-08 01:00:53,310 - INFO - 127.0.0.1 - - [08/Feb/2025 01:00:53] "[33mGET /static/webfonts/fa-brands-400.svg HTTP/1.1[0m" 404 -
