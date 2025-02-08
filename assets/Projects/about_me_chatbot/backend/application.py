@@ -45,7 +45,7 @@ openai.api_key = get_openai_api_key()
 if not openai.api_key:
     logging.error("OpenAI API key could not be retrieved.")
 
-@application.route("/chat", methods=["POST"])
+@application.route("/api/chat", methods=["POST"])
 def chat():
     """Handles user input and returns chatbot response"""
     try:
