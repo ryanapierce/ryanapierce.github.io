@@ -2,6 +2,9 @@ from flask import Flask, request, jsonify
 import requests
 import json
 import openai
+from openai import OpenAI
+
+client = OpenAI(api_key=get_openai_api_key())
 import os
 import logging
 import boto3
@@ -41,7 +44,6 @@ def get_openai_api_key():
         return None
 
 # Load API Key
-openai.api_key = get_openai_api_key()
 if not openai.api_key:
     logging.error("OpenAI API key could not be retrieved.")
 
@@ -65,21 +67,19 @@ def chat():
         logging.info(f"User [{user_ip}] Input: {user_input}")
 
         # OpenAI API request
-        response = openai.ChatCompletion.create(
-            model="gpt-4",
-            messages=[
-                {"role": "system", "content": "You are a chatbot that provides responses based on Ryan Pierce's resume and life notes."},
-                {"role": "user", "content": user_input}
-            ],
-            max_tokens=200
-        )
+        response = client.chat.completions.create(model="gpt-4",
+        messages=[
+            {"role": "system", "content": "You are a chatbot that provides responses based on Ryan Pierce's resume and life notes."},
+            {"role": "user", "content": user_input}
+        ],
+        max_tokens=200)
 
-        chatbot_reply = response["choices"][0]["message"]["content"]
+        chatbot_reply = response.choices[0].message.content
         logging.info(f"User [{user_ip}] Chatbot Response: {chatbot_reply}")
 
         return jsonify({"response": chatbot_reply})
 
-    except openai.error.OpenAIError as e:
+    except openai.OpenAIError as e:
         logging.error(f"OpenAI API Error: {str(e)}")
         return jsonify({"error": "Chatbot service is currently unavailable"}), 500
 
