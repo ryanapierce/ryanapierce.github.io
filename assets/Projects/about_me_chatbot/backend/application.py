@@ -1,10 +1,9 @@
 from flask import Flask, request, jsonify
-import requests
-import json
 import openai
 import os
 import logging
 import boto3
+import json
 from botocore.exceptions import NoCredentialsError, PartialCredentialsError
 from flask_cors import CORS
 
@@ -41,9 +40,11 @@ def get_openai_api_key():
         return None
 
 # Load API Key
-openai.api_key = get_openai_api_key()
-if not openai.api_key:
+openai_api_key = get_openai_api_key()
+if not openai_api_key:
     logging.error("OpenAI API key could not be retrieved.")
+else:
+    openai_client = openai.OpenAI(api_key=openai_api_key)  # Initialize OpenAI client
 
 @application.route("/api/chat", methods=["POST"])
 def chat():
@@ -64,8 +65,8 @@ def chat():
         user_ip = request.remote_addr
         logging.info(f"User [{user_ip}] Input: {user_input}")
 
-        # OpenAI API request
-        response = openai.ChatCompletion.create(
+        # OpenAI API request (Updated to OpenAI v1 format)
+        response = openai_client.chat.completions.create(
             model="gpt-4",
             messages=[
                 {"role": "system", "content": "You are a chatbot that provides responses based on Ryan Pierce's resume and life notes."},
@@ -74,12 +75,12 @@ def chat():
             max_tokens=200
         )
 
-        chatbot_reply = response["choices"][0]["message"]["content"]
+        chatbot_reply = response.choices[0].message.content
         logging.info(f"User [{user_ip}] Chatbot Response: {chatbot_reply}")
 
         return jsonify({"response": chatbot_reply})
 
-    except openai.error.OpenAIError as e:
+    except openai.OpenAIError as e:
         logging.error(f"OpenAI API Error: {str(e)}")
         return jsonify({"error": "Chatbot service is currently unavailable"}), 500
 

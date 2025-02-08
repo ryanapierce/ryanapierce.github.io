@@ -182,3 +182,25 @@ AttributeError: module 'openai' has no attribute 'error'
 2025-02-08 00:07:32,857 - INFO - 127.0.0.1 - - [08/Feb/2025 00:07:32] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
 2025-02-08 00:08:19,167 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
 2025-02-08 00:08:19,273 - INFO -  * Restarting with stat
+2025-02-08 00:10:39,271 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:10:39,669 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-08 00:10:39,669 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-08 00:10:39,670 - INFO -  * Restarting with stat
+2025-02-08 00:10:40,204 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:10:40,512 - WARNING -  * Debugger is active!
+2025-02-08 00:10:40,533 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:10:55,817 - INFO - User [127.0.0.1] Input: Hello
+2025-02-08 00:10:55,824 - INFO - 127.0.0.1 - - [08/Feb/2025 00:10:55] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2025-02-08 00:13:37,000 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
+2025-02-08 00:13:37,114 - INFO -  * Restarting with stat
+2025-02-08 00:13:37,737 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:13:38,128 - WARNING -  * Debugger is active!
+2025-02-08 00:13:38,151 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:13:39,182 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
+2025-02-08 00:13:39,277 - INFO -  * Restarting with stat
+2025-02-08 00:13:39,789 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:13:40,139 - WARNING -  * Debugger is active!
+2025-02-08 00:13:40,160 - INFO -  * Debugger PIN: 822-635-497
