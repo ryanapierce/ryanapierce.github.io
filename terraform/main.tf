@@ -48,4 +48,10 @@ resource "aws_elastic_beanstalk_environment" "chatbot_env" {
     name      = "OPENAI_API_KEY"
     value     = aws_secretsmanager_secret_version.openai_api_key.secret_string
   }
+
+  setting {
+  namespace = "aws:elasticbeanstalk:environment"
+  name      = "EnvironmentType"
+  value     = "SingleInstance"
+}
 }
