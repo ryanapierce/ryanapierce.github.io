@@ -48,4 +48,5 @@ jobs:
         run: |
           source venv/bin/activate
           eb init -p python-3.11 about-me-chat-bot-env --region us-east-1
+          git submodule deinit -f --all
           eb deploy about-me-chat-bot-env
