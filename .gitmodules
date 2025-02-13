@@ -1,6 +1,3 @@
 [submodule "assets/projects/about_me_chatbot"]
     path = assets/projects/about_me_chatbot
     url = https://github.com/ryanapierce/ryanapierce.github.io-chatbot
-
-	path = assets/projects/about_me_chatbot
-	url = https://github.com/ryanapierce/ryanapierce.github.io-chatbot
