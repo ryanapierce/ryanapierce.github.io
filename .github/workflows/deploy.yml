@@ -13,6 +13,18 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Create Virtual Environment and Install Dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip setuptools wheel
+          pip install -r requirements.txt
+
       - name: Check AWS CLI Version
         run: aws --version
 
@@ -22,17 +34,11 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH
           eb --version  # Verify installation
 
-      - name: Install Terraform
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gnupg software-properties-common
-          curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-          sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-          sudo apt-get update
-          sudo apt-get install -y terraform
-          terraform -version  # Check Terraform version
+      - name: Set Up Terraform
+        uses: hashicorp/setup-terraform@v3
 
       - name: Deploy to Elastic Beanstalk
         run: |
+          source venv/bin/activate
           eb init -p python-3.11 about-me-chatbot --region us-east-1
           eb deploy about-me-chatbot-env
