@@ -47,5 +47,5 @@ jobs:
       - name: Deploy to Elastic Beanstalk
         run: |
           source venv/bin/activate
-          eb init -p python-3.11 about-me-chatbot --region us-east-1
-          eb deploy about-me-chatbot
+          eb init -p python-3.11 about-me-chat-bot-env --region us-east-1
+          eb deploy about-me-chat-bot-env
