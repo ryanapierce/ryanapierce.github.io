@@ -16,6 +16,11 @@ jobs:
       - name: Check AWS CLI Version
         run: aws --version
 
+      - name: Install AWS Elastic Beanstalk CLI
+        run: |
+          pip install --upgrade awsebcli
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          eb --version  # Verify installation
 
       - name: Install Terraform
         run: |
@@ -31,4 +36,3 @@ jobs:
         run: |
           eb init -p python-3.11 about-me-chatbot --region us-east-1
           eb deploy about-me-chatbot-env
-
