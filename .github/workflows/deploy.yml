@@ -1,20 +1,51 @@
-name: Deploy to GitHub Pages
+name: Deploy to AWS Elastic Beanstalk
 
 on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      - name: Checkout Repository
+        uses: actions/checkout@v3
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Create Virtual Environment and Install Dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip setuptools wheel
+          pip install -r requirements.txt
+
+      - name: Configure AWS Credentials
+        run: |
+          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws configure set default.region us-east-1
+          aws configure list
+
+      - name: Check AWS CLI Version
+        run: aws --version
+
+      - name: Install AWS Elastic Beanstalk CLI
+        run: |
+          pip install --upgrade awsebcli
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          eb --version  # Verify installation
+
+      - name: Set Up Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Deploy to Elastic Beanstalk
+        run: |
+          source venv/bin/activate
+          eb init -p python-3.11 about-me-chat-bot-env --region us-east-1
+          eb deploy about-me-chat-bot-env
