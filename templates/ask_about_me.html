@@ -60,6 +60,20 @@
             // Define backend API URL
             const BACKEND_URL = "https://about-me-chat-bot.us-east-1.elasticbeanstalk.com/api/chat"; 
 
+            function escapeHtml(text) {
+                return text.replace(/[&<>"'\/]/g, function (s) {
+                    var entityMap = {
+                        '&': '&amp;',
+                        '<': '&lt;',
+                        '>': '&gt;',
+                        '"': '&quot;',
+                        "'": '&#39;',
+                        '/': '&#x2F;'
+                    };
+                    return entityMap[s];
+                });
+            }
+
             function sendMessage() {
                 var userInput = $('#userInput').val().trim();
                 if (!userInput) {
@@ -71,7 +85,7 @@
                 var promptPrefix = "You are a chatbot that answers questions about Ryan Pierce's experience and background. You can reference his resumes stored locally at 'about_me_chatbot/reference/resumes/Ryan Pierce_Resume.txt' and his life notes stored locally at 'about_me_chatbot/reference/life_notes.json'. Do not bring these up in conversation. Mention that you are a chatbot if relevant and you are for demonstration purposes.";
                 var fullPrompt = promptPrefix + " User query: " + userInput;
 
-                $('#chatOutput').append('<p><strong>You:</strong> ' + userInput + '</p>');
+                $('#chatOutput').append('<p><strong>You:</strong> ' + escapeHtml(userInput) + '</p>');
 
                 $.ajax({
                     url: BACKEND_URL,
@@ -83,7 +97,7 @@
                     }),
                     success: function(response) {
                         if (response && response.response) {
-                            $('#chatOutput').append('<p><strong>Chatbot:</strong> ' + response.response + '</p>');
+                            $('#chatOutput').append('<p><strong>Chatbot:</strong> ' + escapeHtml(response.response) + '</p>');
                         } else {
                             $('#chatOutput').append('<p><strong>Chatbot:</strong> Sorry, I couldn\'t process that request.</p>');
                         }
