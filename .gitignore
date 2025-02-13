@@ -1,2 +1,7 @@
-backend/.env
-assets/projects/about_me_chatbot/flask_app/.env
+
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+terraform-eb
+venv/
+backend/new-key-pair.pem
