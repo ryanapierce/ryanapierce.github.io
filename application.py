@@ -100,7 +100,7 @@ def chat():
 
     except Exception as e:
         logging.error(f"Unexpected Error: {str(e)}")
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"error": "An internal error has occurred"}), 500
 
 if __name__ == "__main__":
     from waitress import serve
