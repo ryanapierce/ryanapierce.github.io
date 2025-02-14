@@ -20,22 +20,19 @@ jobs:
       - name: Git clone the repository
         uses: actions/checkout@v3
 
-      - name: Authenticate to AWS Using OIDC
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
+      - name: Manually Assume AWS Role
         run: |
-          export AWS_ROLE_ARN="arn:aws:iam::586794441233:role/awsToGithub"
-          export AWS_WEB_IDENTITY_TOKEN=$(curl -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
-                                          "$ACTIONS_ID_TOKEN_REQUEST_URL" | jq -r '.value')
-
-          export CREDENTIALS=$(aws sts assume-role-with-web-identity \
-            --role-arn "$AWS_ROLE_ARN" \
-            --role-session-name "GithubActionsSession" \
-            --web-identity-token "$AWS_WEB_IDENTITY_TOKEN" \
-            --duration-seconds 3600)
-
+          CREDENTIALS=$(aws sts assume-role --role-arn arn:aws:iam::586794441233:role/awsToGithub --role-session-name GithubActionsSession --duration-seconds 900)
+          if [ $? -ne 0 ]; then
+            echo "Error assuming role"
+            exit 1
+          fi
           export AWS_ACCESS_KEY_ID=$(echo $CREDENTIALS | jq -r '.Credentials.AccessKeyId')
           export AWS_SECRET_ACCESS_KEY=$(echo $CREDENTIALS | jq -r '.Credentials.SecretAccessKey')
           export AWS_SESSION_TOKEN=$(echo $CREDENTIALS | jq -r '.Credentials.SessionToken')
 
-      - name: Verify AWS Identity
-        run: |
-          aws sts get-caller-identity
+      - name: Sts GetCallerIdentity
+        run: aws sts get-caller-identity
