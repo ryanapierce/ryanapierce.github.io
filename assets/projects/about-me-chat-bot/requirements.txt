@@ -32,7 +32,7 @@ botocore==1.36.20
 CacheControl==0.14.2
 cachelib==0.9.0
 cachetools==5.5.1
-certifi==2023.7.22
+certifi==2024.7.4
 cffi==1.17.1
 charset-normalizer==3.2.0
 click==8.1.8
@@ -95,7 +95,7 @@ html5lib==1.1
 httpcore==1.0.7
 httplib2==0.22.0
 httpx==0.28.1
-idna==3.4
+idna==3.7
 importlib_metadata==8.5.0
 inflection==0.5.1
 ipykernel==6.25.2
