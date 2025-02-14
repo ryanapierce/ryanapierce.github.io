@@ -32,7 +32,7 @@ botocore==1.36.20
 CacheControl==0.14.2
 cachelib==0.9.0
 cachetools==5.5.1
-certifi==2023.7.22
+certifi==2024.7.4
 cffi==1.17.1
 charset-normalizer==3.2.0
 click==8.1.8
@@ -45,7 +45,7 @@ connexion==2.14.2
 contourpy==1.1.1
 cron-descriptor==1.4.5
 croniter==6.0.0
-cryptography==44.0.0
+cryptography==44.0.1
 cycler==0.11.0
 debugpy==1.8.0
 decorator==5.1.1
@@ -95,7 +95,7 @@ html5lib==1.1
 httpcore==1.0.7
 httplib2==0.22.0
 httpx==0.28.1
-idna==3.4
+idna==3.7
 importlib_metadata==8.5.0
 inflection==0.5.1
 ipykernel==6.25.2
@@ -220,7 +220,7 @@ tzdata==2023.3
 uc-micro-py==1.0.3
 universal_pathlib==0.2.6
 uritemplate==4.1.1
-urllib3==2.0.4
+urllib3==2.2.2
 watchtower==3.3.1
 wcwidth==0.2.6
 webencodings==0.5.1
