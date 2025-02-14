@@ -1,0 +1,326 @@
+2025-02-07 23:14:23,835 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-07 23:14:30,913 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-07 23:14:31,213 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-07 23:14:31,213 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-07 23:18:07,238 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-07 23:18:07,621 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-07 23:18:07,621 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-07 23:18:58,625 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-07 23:18:58,929 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-07 23:18:58,929 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-07 23:19:06,866 - INFO - 127.0.0.1 - - [07/Feb/2025 23:19:06] "[33mGET / HTTP/1.1[0m" 404 -
+2025-02-07 23:20:11,693 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-07 23:20:50,236 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-07 23:20:50,546 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-07 23:20:50,546 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-07 23:21:00,592 - WARNING - Received empty user message.
+2025-02-07 23:21:00,592 - INFO - 127.0.0.1 - - [07/Feb/2025 23:21:00] "[31m[1mPOST /api/chat HTTP/1.1[0m" 400 -
+2025-02-07 23:24:18,610 - WARNING - Received empty user message.
+2025-02-07 23:24:18,610 - INFO - 127.0.0.1 - - [07/Feb/2025 23:24:18] "[31m[1mPOST /api/chat HTTP/1.1[0m" 400 -
+2025-02-07 23:33:33,818 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-07 23:33:34,232 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-07 23:33:34,232 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-07 23:33:40,661 - INFO - 127.0.0.1 - - [07/Feb/2025 23:33:40] "[33mGET / HTTP/1.1[0m" 404 -
+2025-02-07 23:53:52,598 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-07 23:53:52,962 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-07 23:53:52,963 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-07 23:54:54,936 - INFO - User [127.0.0.1] Input: Hello
+2025-02-07 23:54:54,936 - ERROR - Exception on /api/chat [POST]
+Traceback (most recent call last):
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py", line 68, in chat
+    response = openai.ChatCompletion.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/venv/lib/python3.11/site-packages/openai/lib/_old_api.py", line 39, in __call__
+    raise APIRemovedInV1(symbol=self._symbol)
+openai.lib._old_api.APIRemovedInV1: 
+
+You tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
+
+You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
+
+Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+
+A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/venv/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/venv/lib/python3.11/site-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/venv/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/venv/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py", line 82, in chat
+    except openai.error.OpenAIError as e:
+           ^^^^^^^^^^^^
+AttributeError: module 'openai' has no attribute 'error'
+2025-02-07 23:54:54,939 - INFO - 127.0.0.1 - - [07/Feb/2025 23:54:54] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2025-02-07 23:55:42,205 - INFO - User [127.0.0.1] Input: Hello
+2025-02-07 23:55:42,206 - ERROR - Exception on /api/chat [POST]
+Traceback (most recent call last):
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py", line 68, in chat
+    response = openai.ChatCompletion.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/venv/lib/python3.11/site-packages/openai/lib/_old_api.py", line 39, in __call__
+    raise APIRemovedInV1(symbol=self._symbol)
+openai.lib._old_api.APIRemovedInV1: 
+
+You tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
+
+You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
+
+Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+
+A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/venv/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/venv/lib/python3.11/site-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/venv/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/venv/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py", line 82, in chat
+    except openai.error.OpenAIError as e:
+           ^^^^^^^^^^^^
+AttributeError: module 'openai' has no attribute 'error'
+2025-02-07 23:55:42,207 - INFO - 127.0.0.1 - - [07/Feb/2025 23:55:42] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2025-02-08 00:04:28,379 - INFO - User [127.0.0.1] Input: Hello
+2025-02-08 00:04:28,380 - ERROR - Exception on /api/chat [POST]
+Traceback (most recent call last):
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py", line 68, in chat
+    response = openai.ChatCompletion.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/venv/lib/python3.11/site-packages/openai/lib/_old_api.py", line 39, in __call__
+    raise APIRemovedInV1(symbol=self._symbol)
+openai.lib._old_api.APIRemovedInV1: 
+
+You tried to access openai.ChatCompletion, but this is no longer supported in openai>=1.0.0 - see the README at https://github.com/openai/openai-python for the API.
+
+You can run `openai migrate` to automatically upgrade your codebase to use the 1.0.0 interface. 
+
+Alternatively, you can pin your installation to the old version, e.g. `pip install openai==0.28`
+
+A detailed migration guide is available here: https://github.com/openai/openai-python/discussions/742
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/venv/lib/python3.11/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/venv/lib/python3.11/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/venv/lib/python3.11/site-packages/flask_cors/extension.py", line 194, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/venv/lib/python3.11/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/venv/lib/python3.11/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py", line 82, in chat
+    except openai.error.OpenAIError as e:
+           ^^^^^^^^^^^^
+AttributeError: module 'openai' has no attribute 'error'
+2025-02-08 00:04:28,382 - INFO - 127.0.0.1 - - [08/Feb/2025 00:04:28] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2025-02-08 00:07:13,110 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:07:13,853 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-08 00:07:13,854 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-08 00:07:13,855 - INFO -  * Restarting with stat
+2025-02-08 00:07:14,415 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:07:15,087 - WARNING -  * Debugger is active!
+2025-02-08 00:07:15,256 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:07:32,851 - INFO - User [127.0.0.1] Input: Hello
+2025-02-08 00:07:32,857 - INFO - 127.0.0.1 - - [08/Feb/2025 00:07:32] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2025-02-08 00:08:19,167 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
+2025-02-08 00:08:19,273 - INFO -  * Restarting with stat
+2025-02-08 00:10:39,271 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:10:39,669 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-08 00:10:39,669 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-08 00:10:39,670 - INFO -  * Restarting with stat
+2025-02-08 00:10:40,204 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:10:40,512 - WARNING -  * Debugger is active!
+2025-02-08 00:10:40,533 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:10:55,817 - INFO - User [127.0.0.1] Input: Hello
+2025-02-08 00:10:55,824 - INFO - 127.0.0.1 - - [08/Feb/2025 00:10:55] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2025-02-08 00:13:37,000 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
+2025-02-08 00:13:37,114 - INFO -  * Restarting with stat
+2025-02-08 00:13:37,737 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:13:38,128 - WARNING -  * Debugger is active!
+2025-02-08 00:13:38,151 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:13:39,182 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
+2025-02-08 00:13:39,277 - INFO -  * Restarting with stat
+2025-02-08 00:13:39,789 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:13:40,139 - WARNING -  * Debugger is active!
+2025-02-08 00:13:40,160 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:14:06,315 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:14:06,756 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-08 00:14:06,756 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-08 00:14:06,757 - INFO -  * Restarting with stat
+2025-02-08 00:14:07,245 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:14:07,586 - WARNING -  * Debugger is active!
+2025-02-08 00:14:07,606 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:14:14,265 - INFO - User [127.0.0.1] Input: Hello
+2025-02-08 00:14:14,530 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-02-08 00:14:14,534 - ERROR - OpenAI API Error: Error code: 401 - {'error': {'message': 'Incorrect API key provided: JYmXRFP7************************************************************************************************************************************************3x8A. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-02-08 00:14:14,535 - INFO - 127.0.0.1 - - [08/Feb/2025 00:14:14] "[35m[1mPOST /api/chat HTTP/1.1[0m" 500 -
+2025-02-08 00:23:19,651 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:23:20,062 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-08 00:23:20,062 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-08 00:23:20,063 - INFO -  * Restarting with stat
+2025-02-08 00:23:20,574 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:23:20,934 - WARNING -  * Debugger is active!
+2025-02-08 00:23:20,958 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:23:25,005 - INFO - User [127.0.0.1] Input: Hello
+2025-02-08 00:23:26,356 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-08 00:23:26,362 - INFO - User [127.0.0.1] Chatbot Response: Hello! How can I assist you with information about Ryan Pierce?
+2025-02-08 00:23:26,363 - INFO - 127.0.0.1 - - [08/Feb/2025 00:23:26] "POST /api/chat HTTP/1.1" 200 -
+2025-02-08 00:26:34,931 - INFO - 127.0.0.1 - - [08/Feb/2025 00:26:34] "[31m[1mGET /api/chat HTTP/1.1[0m" 405 -
+2025-02-08 00:27:21,364 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
+2025-02-08 00:27:21,493 - INFO -  * Restarting with stat
+2025-02-08 00:28:49,553 - INFO -  * Restarting with stat
+2025-02-08 00:28:50,582 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:28:50,995 - WARNING -  * Debugger is active!
+2025-02-08 00:28:51,018 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:31:59,046 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
+2025-02-08 00:31:59,170 - INFO -  * Restarting with stat
+2025-02-08 00:31:59,929 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:32:00,346 - WARNING -  * Debugger is active!
+2025-02-08 00:32:00,370 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:32:23,774 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
+2025-02-08 00:32:23,884 - INFO -  * Restarting with stat
+2025-02-08 00:32:25,061 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:32:25,394 - WARNING -  * Debugger is active!
+2025-02-08 00:32:25,415 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:35:22,187 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:35:22,608 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-08 00:35:22,608 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-08 00:35:22,609 - INFO -  * Restarting with stat
+2025-02-08 00:35:23,550 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:35:23,892 - WARNING -  * Debugger is active!
+2025-02-08 00:35:23,916 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:35:41,797 - INFO - 127.0.0.1 - - [08/Feb/2025 00:35:41] "[33mGET / HTTP/1.1[0m" 404 -
+2025-02-08 00:35:48,582 - INFO - 127.0.0.1 - - [08/Feb/2025 00:35:48] "[33mGET / HTTP/1.1[0m" 404 -
+2025-02-08 00:36:20,051 - INFO - User [127.0.0.1] Input: Hello
+2025-02-08 00:36:21,771 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-08 00:36:21,778 - INFO - User [127.0.0.1] Chatbot Response: Hello! How can I assist you today?
+2025-02-08 00:36:21,779 - INFO - 127.0.0.1 - - [08/Feb/2025 00:36:21] "POST /api/chat HTTP/1.1" 200 -
+2025-02-08 00:36:21,811 - INFO - User [127.0.0.1] Input: Hello
+2025-02-08 00:36:23,318 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-08 00:36:23,319 - INFO - User [127.0.0.1] Chatbot Response: Hello! How may I assist you today? If you have any queries related to my creator, Ryan Pierce, his career, or his skillset, feel free to ask.
+2025-02-08 00:36:23,319 - INFO - 127.0.0.1 - - [08/Feb/2025 00:36:23] "POST /api/chat HTTP/1.1" 200 -
+2025-02-08 00:36:23,351 - INFO - User [127.0.0.1] Input: Hello
+2025-02-08 00:36:23,928 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-08 00:36:23,931 - INFO - User [127.0.0.1] Chatbot Response: Hello! How can I assist you today?
+2025-02-08 00:36:23,932 - INFO - 127.0.0.1 - - [08/Feb/2025 00:36:23] "POST /api/chat HTTP/1.1" 200 -
+2025-02-08 00:36:23,963 - INFO - User [127.0.0.1] Input: Hello
+2025-02-08 00:36:24,751 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-08 00:36:24,752 - INFO - User [127.0.0.1] Chatbot Response: Hello! How can I assist you today?
+2025-02-08 00:36:24,752 - INFO - 127.0.0.1 - - [08/Feb/2025 00:36:24] "POST /api/chat HTTP/1.1" 200 -
+2025-02-08 00:36:24,783 - INFO - User [127.0.0.1] Input: Hello
+2025-02-08 00:36:26,490 - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-02-08 00:36:26,491 - INFO - User [127.0.0.1] Chatbot Response: Hello! How can I assist you today?
+2025-02-08 00:36:26,491 - INFO - 127.0.0.1 - - [08/Feb/2025 00:36:26] "POST /api/chat HTTP/1.1" 200 -
+2025-02-08 00:36:26,526 - INFO - ratelimit 5 per 1 minute (127.0.0.1) exceeded at endpoint: chat
+2025-02-08 00:36:26,526 - INFO - 127.0.0.1 - - [08/Feb/2025 00:36:26] "[31m[1mPOST /api/chat HTTP/1.1[0m" 429 -
+2025-02-08 00:37:35,098 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
+2025-02-08 00:37:35,503 - INFO -  * Restarting with stat
+2025-02-08 00:37:36,620 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:37:37,178 - WARNING -  * Debugger is active!
+2025-02-08 00:37:37,212 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:38:41,258 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
+2025-02-08 00:38:41,635 - INFO -  * Restarting with stat
+2025-02-08 00:38:44,053 - INFO -  * Restarting with stat
+2025-02-08 00:38:45,029 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:38:45,446 - WARNING -  * Debugger is active!
+2025-02-08 00:38:45,466 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 00:59:49,465 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
+2025-02-08 00:59:49,926 - INFO -  * Restarting with stat
+2025-02-08 00:59:51,248 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 00:59:51,651 - WARNING -  * Debugger is active!
+2025-02-08 00:59:51,683 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 01:00:10,008 - INFO -  * Detected change in '/Users/RyanPierce/Documents/GitHub/Resume/ryanapierce.github.io/assets/projects/about_me_chatbot/backend/application.py', reloading
+2025-02-08 01:00:10,423 - INFO -  * Restarting with stat
+2025-02-08 01:00:11,465 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 01:00:11,812 - WARNING -  * Debugger is active!
+2025-02-08 01:00:11,837 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 01:00:41,668 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 01:00:49,545 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 01:00:49,928 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8080
+ * Running on http://192.168.40.213:8080
+2025-02-08 01:00:49,929 - INFO - [33mPress CTRL+C to quit[0m
+2025-02-08 01:00:49,930 - INFO -  * Restarting with stat
+2025-02-08 01:00:50,834 - INFO - Found credentials in shared credentials file: ~/.aws/credentials
+2025-02-08 01:00:51,220 - WARNING -  * Debugger is active!
+2025-02-08 01:00:51,242 - INFO -  * Debugger PIN: 822-635-497
+2025-02-08 01:00:53,248 - INFO - 127.0.0.1 - - [08/Feb/2025 01:00:53] "GET / HTTP/1.1" 200 -
+2025-02-08 01:00:53,266 - INFO - 127.0.0.1 - - [08/Feb/2025 01:00:53] "GET /static/css/noscript.css HTTP/1.1" 200 -
+2025-02-08 01:00:53,266 - INFO - 127.0.0.1 - - [08/Feb/2025 01:00:53] "GET /static/css/main.css HTTP/1.1" 200 -
+2025-02-08 01:00:53,271 - INFO - 127.0.0.1 - - [08/Feb/2025 01:00:53] "GET /static/css/fontawesome-all.min.css HTTP/1.1" 200 -
+2025-02-08 01:00:53,294 - INFO - 127.0.0.1 - - [08/Feb/2025 01:00:53] "[33mGET /static/css/images/overlay.png HTTP/1.1[0m" 404 -
+2025-02-08 01:00:53,295 - INFO - 127.0.0.1 - - [08/Feb/2025 01:00:53] "[33mGET /static/webfonts/fa-brands-400.woff2 HTTP/1.1[0m" 404 -
+2025-02-08 01:00:53,304 - INFO - 127.0.0.1 - - [08/Feb/2025 01:00:53] "[33mGET /static/webfonts/fa-brands-400.woff HTTP/1.1[0m" 404 -
+2025-02-08 01:00:53,307 - INFO - 127.0.0.1 - - [08/Feb/2025 01:00:53] "[33mGET /static/webfonts/fa-brands-400.ttf HTTP/1.1[0m" 404 -
+2025-02-08 01:00:53,310 - INFO - 127.0.0.1 - - [08/Feb/2025 01:00:53] "[33mGET /static/webfonts/fa-brands-400.svg HTTP/1.1[0m" 404 -
