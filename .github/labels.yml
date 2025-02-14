@@ -1,0 +1,50 @@
+# GitHub Labeler Configuration
+
+# Label for AWS Elastic Beanstalk deployment files
+aws:
+  - .github/workflows/deploy-to-aws-elastic-beanstalk.yml
+  - assets/projects/about-me-chat-bot/.ebextensions/**
+  - assets/projects/about-me-chat-bot/.ebignore
+
+# Label for frontend-related changes (CSS, JS, HTML)
+frontend:
+  - assets/css/**
+  - assets/js/**
+  - assets/webfonts/**
+  - elements.html
+  - index.html
+  - projects.html
+  - internships.html
+  - mil_ed.html
+
+# Label for backend-related changes (Python, API, Terraform)
+backend:
+  - assets/projects/about-me-chat-bot/requirements.txt
+  - assets/projects/about-me-chat-bot/terraform/**
+  - __pycache__/**
+  - application.cpython-311.pyc
+
+# Label for static assets (Images, Fonts, etc.)
+assets:
+  - assets/images/**
+  - assets/webfonts/**
+
+# Label for documentation updates (README, License, CNAME)
+documentation:
+  - README.txt
+  - LICENSE.txt
+  - CNAME
+
+# Label for logs and ignored files
+ci/cd:
+  - .gitignore
+  - chatbot.log
+
+# Label for resumes and profile updates
+profile:
+  - assets/resumes/**
+  - assets/images/ProfilePic.png
+
+# Label for project-related changes
+projects:
+  - assets/projects/**
