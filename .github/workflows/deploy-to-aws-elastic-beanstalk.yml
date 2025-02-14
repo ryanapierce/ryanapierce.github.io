@@ -23,7 +23,7 @@ jobs:
           python -m venv venv
           source venv/bin/activate
           pip install --upgrade pip setuptools wheel
-          pip install -r requirements.txt
+          pip install -r assets/projects/about-me-chat-bot/requirements.txt
 
       - name: Manually Set AWS Credentials
         env:
