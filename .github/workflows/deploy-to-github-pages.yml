@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main 
+      - main
 
 jobs:
   deploy:
@@ -11,10 +11,17 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./  
+    - name: Set Up Git User
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "github-actions@github.com"
+
+    - name: Deploy to GitHub Pages Manually
+      run: |
+        git checkout --orphan gh-pages
+        git rm -rf .
+        git add .
+        git commit -m "Deploy GitHub Pages"
+        git push origin gh-pages --force
