@@ -4,4 +4,4 @@
 !.elasticbeanstalk/*.global.yml
 terraform-eb
 venv/
-backend/new-key-pair.pem
+chatbot.log
