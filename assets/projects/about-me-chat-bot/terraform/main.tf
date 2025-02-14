@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-east-1"
+  region = var.aws_region
 }
 
 # Create an S3 bucket for Elastic Beanstalk deployments
@@ -48,10 +48,14 @@ resource "aws_elastic_beanstalk_environment" "chatbot_env" {
     name      = "OPENAI_API_KEY"
     value     = aws_secretsmanager_secret_version.openai_api_key.secret_string
   }
-
-  setting {
-  namespace = "aws:elasticbeanstalk:environment"
-  name      = "EnvironmentType"
-  value     = "SingleInstance"
 }
+
+# AWS Secrets Manager for OpenAI API Key
+resource "aws_secretsmanager_secret" "openai_api_key" {
+  name = "OpenAIAPIKey"
+}
+
+resource "aws_secretsmanager_secret_version" "openai_api_key" {
+  secret_id     = aws_secretsmanager_secret.openai_api_key.id
+  secret_string = var.openai_api_key
 }
