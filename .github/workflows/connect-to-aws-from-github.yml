@@ -20,13 +20,19 @@ jobs:
       - name: Git clone the repository
         uses: actions/checkout@v3
 
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
       - name: Manually Assume AWS Role
         run: |
-          CREDENTIALS=$(aws sts assume-role --role-arn arn:aws:iam::586794441233:role/awsToGithub --role-session-name GithubActionsSession)
+          CREDENTIALS=$(aws sts assume-role --role-arn arn:aws:iam::586794441233:role/awsToGithub --role-session-name GithubActionsSession --duration-seconds 900)
+          if [ $? -ne 0 ]; then
+            echo "Error assuming role"
+            exit 1
+          fi
           export AWS_ACCESS_KEY_ID=$(echo $CREDENTIALS | jq -r '.Credentials.AccessKeyId')
           export AWS_SECRET_ACCESS_KEY=$(echo $CREDENTIALS | jq -r '.Credentials.SecretAccessKey')
           export AWS_SESSION_TOKEN=$(echo $CREDENTIALS | jq -r '.Credentials.SessionToken')
 
       - name: Sts GetCallerIdentity
-        run: |
-          aws sts get-caller-identity
+        run: aws sts get-caller-identity
