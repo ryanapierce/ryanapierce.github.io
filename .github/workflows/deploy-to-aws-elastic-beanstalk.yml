@@ -51,5 +51,10 @@ jobs:
         run: |
           source venv/bin/activate
           eb init -p python-3.11 about-me-chat-bot-env --region us-east-1
-          git submodule deinit -f --all
+          
+          if ! eb status about-me-chat-bot-env; then
+            echo "Environment not found. Creating a new environment..."
+            eb create about-me-chat-bot-env --single --region us-east-1
+          fi
+
           eb deploy about-me-chat-bot-env
