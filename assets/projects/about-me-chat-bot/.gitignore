@@ -5,3 +5,4 @@
 !.elasticbeanstalk/*.global.yml
 venv/
 new-key-pair.pem
+.DS_Store
