@@ -58,7 +58,7 @@ jobs:
             echo "env_exists=false" >> $GITHUB_ENV
           fi
 
-      - name: Deploy to Elastic Beanstalk with Enforced Platform Version
+      - name: Deploy to Elastic Beanstalk
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -71,7 +71,6 @@ jobs:
             eb create about-me-chat-bot-env --platform "Python 3.11 running on 64bit Amazon Linux 2023" --region us-east-1 --keyname new-key-pair
           else
             echo "Elastic Beanstalk environment exists. Deploying application..."
+            eb deploy about-me-chat-bot-env --timeout 20
           fi
-
-          eb deploy about-me-chat-bot-env --timeout 20
 
