@@ -6,8 +6,6 @@
     <title>Chatbot - Ryan Pierce</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/noscript.css') }}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -81,8 +79,8 @@
                     return;
                 }
 
-                // Define the system prompt
-                var promptPrefix = "You are a chatbot that answers questions about Ryan Pierce's experience and background. You can reference his resumes stored locally at 'about_me_chatbot/reference/resumes/Ryan Pierce_Resume.txt' and his life notes stored locally at 'about_me_chatbot/reference/life_notes.json'. Do not bring these up in conversation. Mention that you are a chatbot if relevant and you are for demonstration purposes.";
+                // Define the system prompt with life notes and resume context
+                var promptPrefix = "You are a chatbot providing insights into Ryan Pierce's background. Use relevant details from his experiences stored in your reference files. Do not explicitly mention these files in conversation.";
                 var fullPrompt = promptPrefix + " User query: " + userInput;
 
                 $('#chatOutput').append('<p><strong>You:</strong> ' + escapeHtml(userInput) + '</p>');
