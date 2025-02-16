@@ -1,9 +1,7 @@
 from flask import Flask, request, jsonify, render_template
 import openai
-import logging
 import boto3
 import json
-import watchtower  # CloudWatch logging
 from botocore.exceptions import NoCredentialsError, PartialCredentialsError
 from flask_cors import CORS
 from flask_limiter import Limiter
@@ -21,17 +19,6 @@ limiter = Limiter(
     storage_uri="memory://"
 )
 
-# Setup logging (Logs to file & AWS CloudWatch)
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.FileHandler("chatbot.log"),
-        logging.StreamHandler(),
-        watchtower.CloudWatchLogHandler(log_group="chatbot-logs", stream_name="chatbot-app")
-    ]
-)
-
 # AWS Secrets Manager configuration
 AWS_REGION = "us-east-1"
 SECRET_NAME = "OPENAI_API_KEY"
@@ -44,13 +31,12 @@ def get_openai_api_key():
         secret_value = client.get_secret_value(SecretId=SECRET_NAME)
         return json.loads(secret_value["SecretString"])["OPENAI_API_KEY"]
     except Exception as e:
-        logging.error(f"Error fetching secret: {str(e)}")
         return None
 
 # Load API Key
 openai_api_key = get_openai_api_key()
 if not openai_api_key:
-    logging.error("OpenAI API key could not be retrieved.")
+    raise RuntimeError("OpenAI API key could not be retrieved.")
 else:
     openai_client = openai.OpenAI(api_key=openai_api_key)
 
@@ -67,16 +53,11 @@ def chat():
     try:
         data = request.get_json()
         if not data or "messages" not in data or not data["messages"]:
-            logging.warning(f"Invalid request received: {data}")
             return jsonify({"error": "Invalid request format"}), 400
 
         user_input = data["messages"][0].get("content", "").strip()
         if not user_input:
-            logging.warning("Received empty user message.")
             return jsonify({"error": "Empty message"}), 400
-
-        user_ip = request.remote_addr
-        logging.info(f"User [{user_ip}] Input: {user_input}")
 
         # OpenAI API request
         response = openai_client.chat.completions.create(
@@ -89,16 +70,13 @@ def chat():
         )
 
         chatbot_reply = response.choices[0].message.content
-        logging.info(f"User [{user_ip}] Chatbot Response: {chatbot_reply}")
 
         return jsonify({"response": chatbot_reply})
 
     except openai.OpenAIError as e:
-        logging.error(f"OpenAI API Error: {str(e)}")
         return jsonify({"error": "Chatbot service is currently unavailable"}), 500
 
     except Exception as e:
-        logging.error(f"Unexpected Error: {str(e)}")
         return jsonify({"error": "An internal error has occurred"}), 500
 
 if __name__ == "__main__":
