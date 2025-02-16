@@ -97,9 +97,9 @@
 			// Expand "target" if it's not a jQuery object already.
 				if (!(config.target instanceof jQuery)) {
 					try {
-						config.target = $(config.target);
+						config.target = $.find(config.target);
 					} catch (e) {
-						console.error('Invalid jQuery selector:', config.target);
+						console.error('Invalid CSS selector:', config.target);
 						config.target = $();
 					}
 				}
