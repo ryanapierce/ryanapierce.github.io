@@ -23,7 +23,7 @@ jobs:
           python -m venv venv
           source venv/bin/activate
           pip install --upgrade pip setuptools wheel
-          pip install -r assets/projects/about-me-chat-bot/requirements.txt
+          pip install -r requirements.txt || pip install -r assets/projects/about-me-chat-bot/requirements.txt
 
       - name: Manually Set AWS Credentials
         env:
@@ -48,16 +48,30 @@ jobs:
       - name: Set Up Terraform
         uses: hashicorp/setup-terraform@v3
 
-      - name: Deploy to Elastic Beanstalk
+      - name: Verify Elastic Beanstalk Environment Status
+        id: check_env
+        continue-on-error: true
+        run: |
+          if eb status about-me-chat-bot-env; then
+            echo "env_exists=true" >> $GITHUB_ENV
+          else
+            echo "env_exists=false" >> $GITHUB_ENV
+          fi
+
+      - name: Deploy to Elastic Beanstalk with Enforced Platform Version
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           source venv/bin/activate
-          echo "y" | eb init -p python-3.11 about-me-chat-bot-env --region us-east-1
-          if ! eb status about-me-chat-bot-env; then
-            echo "Environment not found. Creating a new environment..."
-            eb create about-me-chat-bot-env --single --region us-east-1
+          echo "y" | eb init -p "Python 3.11 running on 64bit Amazon Linux 2023" about-me-chat-bot-env --region us-east-1
+
+          if [[ "${{ env.env_exists }}" == "false" ]]; then
+            echo "Elastic Beanstalk environment does not exist. Creating a new one..."
+            eb create about-me-chat-bot-env --platform "Python 3.11 running on 64bit Amazon Linux 2023" --region us-east-1 --keyname new-key-pair
+          else
+            echo "Elastic Beanstalk environment exists. Deploying application..."
           fi
 
-          eb deploy about-me-chat-bot-env
+          eb deploy about-me-chat-bot-env --timeout 20
+
