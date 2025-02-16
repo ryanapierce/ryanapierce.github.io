@@ -1,0 +1,49 @@
+Ryan Pierce
+248-378-7139 | rpierce521@gmail.com | www.linkedin.com/in/ryan-a-pierce | ryanapierce.github.io
+
+Education
+Eastern Michigan University					          	       		      	   Ypsilanti, MI
+Bachelor of Business Administration			 	         	  	  September 2017 – December 2020	
+Major in Accounting & Information Systems                                                                                     GPA: 3.42	          
+Activities: ROTC, EMU Mentor Collective Student Mentor, and Rec Basketball
+
+Experience
+Coupa Software											 Ann Arbor, MI
+Technical Support Specialist                                           				         October 2020 - Present
+Assists internal users and external customers with installation, support, and license deployment
+Provides first tier help-desk support in customer installation troubleshooting of product offering 
+Utilizes Salesforce.com to manage and issue licenses for purchases, renewals, projects, and trainings
+
+Army National Guard 										       Taylor, MI
+Finance/Accounting Officer								         January 2021 - Present
+Overseeing Army pay, commercial vendor support, disbursement of public funds, auditing, travel allowances, accounting, financial management information systems and banking 
+													      Howell, MI
+S3 (Operations) Assistant 							       January 2017 – December 2020
+Assisted in the facilitation and planning of on-going and future operations for a Battalion of 430 soldiers
+Developed and distributed Operations Orders to extend guidance to subordinate units
+			 
+94F: Computer/Detection Systems Repairer	           				             October 2014 – January 2017
+Used test, measurement and diagnostic equipment; test program sets; and interactive electronic technical manuals to troubleshoot and repair equipment
+Performed preventive maintenance checks on equipment 
+
+Ford Motor Company			  							  Dearborn, MI
+Service & Engineering Operations Intern 							    June – August 2020
+Developed dashboards, using R and Tableau, to analyze and visualize data to assist in decision making
+Integrated HTML, CSS, and JavaScript into program to enhance appearance and quality of dashboard
+Utilized Alteryx to automate various data management processes
+Presented work to management for continuous improvement of working files and programs
+				  		  						  
+Faurecia Interior Systems										       Saline, MI Financial Analyst Intern	           						           	       March 2019 – June 2020 
+Completed various reports and KPIs for internal analysis and decision making for a 1.4M square foot plant
+Performed capital maintenance on $178M of new and existing assets and tooling
+Developed macros using VBA in Excel to streamline financial reporting
+Implemented RFID tracking system to improve identification process of tool/asset location
+			 Southfield, MI
+Sales Analyst Intern								 	        June 2018 – March 2019
+Utilized SAP to create pricing/ scheduling agreements for production and service parts in eight plants
+Audited system data to ensure accuracy of information
+Developed text and video job training tools to facilitate working continuity after employee transitions
+
+Skills
+Programing: R, C#, HTML, CSS, JavaScript, VBA, Python, PHP, Unix/Linux, and SQL
+Software: Microsoft Excel, Microsoft Access, SAP, Alteryx, Tableau, MySQL, and Salesforce
