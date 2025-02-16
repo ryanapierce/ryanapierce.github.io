@@ -7,6 +7,10 @@ from botocore.exceptions import NoCredentialsError, PartialCredentialsError
 from flask_cors import CORS
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.ERROR)
 
 # Initialize Flask application
 application = Flask(__name__, static_folder="static", template_folder="templates")
@@ -118,7 +122,8 @@ def chat():
         return jsonify({"error": "Chatbot service is currently unavailable"}), 500
 
     except Exception as e:
-        return jsonify({"error": f"An internal error has occurred: {str(e)}"}), 500
+        logging.error("An internal error has occurred", exc_info=True)
+        return jsonify({"error": "An internal error has occurred"}), 500
 
 
 if __name__ == "__main__":
