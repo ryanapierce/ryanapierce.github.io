@@ -52,7 +52,7 @@ jobs:
         id: check_env
         continue-on-error: true
         run: |
-          if eb status about-me-chat-bot-env; then
+          if eb status about-me-chat-bot-env > /dev/null 2>&1; then
             echo "env_exists=true" >> $GITHUB_ENV
           else
             echo "env_exists=false" >> $GITHUB_ENV
