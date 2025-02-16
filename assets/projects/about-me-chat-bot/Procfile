@@ -1,2 +1,2 @@
-web: /var/app/venv/bin/gunicorn --workers=3 --timeout 120 --log-level=info --bind 127.0.0.1:8000 application:application
+web: cd /var/app/current && /var/app/venv/bin/gunicorn --workers=3 --timeout 120 --log-level=info --bind 127.0.0.1:8000 application:application
 
