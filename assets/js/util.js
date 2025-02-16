@@ -95,8 +95,14 @@
 			}, userConfig);
 
 			// Expand "target" if it's not a jQuery object already.
-				if (typeof config.target != 'jQuery')
-					config.target = $(config.target);
+				if (!(config.target instanceof jQuery)) {
+					try {
+						config.target = $(config.target);
+					} catch (e) {
+						console.error('Invalid jQuery selector:', config.target);
+						config.target = $();
+					}
+				}
 
 		// Panel.
 
