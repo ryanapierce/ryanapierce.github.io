@@ -1,4 +1,4 @@
-This project is an **AI-powered chatbot** designed to provide insights into **Ryan Pierce’s professional background, experience, and expertise.** The chatbot is integrated with OpenAI’s **GPT-4-turbo**, utilizing structured data from **resume documents** and **life notes** to generate personalized responses.  
+This project is an **AI-powered chatbot** designed to provide insights into **Ryan Pierce’s professional background, experience, and expertise.** The chatbot is integrated with OpenAI’s **GPT-3.5-turbo**, utilizing structured data from **resume documents** and **life notes** to generate personalized responses.  
 
 ---
 
