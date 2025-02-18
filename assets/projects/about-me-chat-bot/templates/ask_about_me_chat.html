@@ -77,25 +77,21 @@
                 $('#chatOutput').append('<p><strong>You:</strong> ' + userInput + '</p>');
     
                 $.ajax({
-                    url: BACKEND_URL,
-                    type: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                        query: userInput
-                    }),
+                    url: "https://8y33u4e087.execute-api.us-east-1.amazonaws.com/prod/chat",
+                    type: "POST",
+                    contentType: "application/json",
+                    crossDomain: true,
+                    data: JSON.stringify({ query: userInput }),
                     success: function(response) {
                         if (response && response.response) {
-                            $('#chatOutput').append('<p><strong>Chatbot:</strong> ' + response.response + '</p>');
+                            $('#chatOutput').append('<p><strong>Chatbot:</strong> ' + escapeHtml(response.response) + '</p>');
                         } else {
-                            $('#chatOutput').append('<p><strong>Chatbot:</strong> Error processing request.</p>');
+                            $('#chatOutput').append('<p><strong>Chatbot:</strong> Sorry, I couldn\'t process that request.</p>');
                         }
-                        $('#userInput').val('');
                     },
                     error: function(xhr, status, error) {
-                        console.error('Error:', error);
-                        console.error('Status:', status);
-                        console.error('Response:', xhr.responseText);
-                        alert('Error communicating with the chatbot.');
+                        console.error("API Error:", xhr.responseText || error);
+                        $('#chatOutput').append('<p><strong>Chatbot:</strong> Error processing request.</p>');
                     }
                 });
             }
