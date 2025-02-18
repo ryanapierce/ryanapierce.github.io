@@ -63,15 +63,19 @@ jobs:
           # Manually create the deployment package
           zip -r application.zip . -x "*.git*" "venv/*" "*.DS_Store"
 
-          # Upload ZIP file to S3 before creating application version
+          # Upload ZIP file to S3
           S3_BUCKET="elasticbeanstalk-us-east-1-586794441233"  # Your Elastic Beanstalk S3 bucket
-          aws s3 cp application.zip s3://$S3_BUCKET/application.zip --region us-east-1  # ✅ Upload to S3
+          aws s3 cp application.zip s3://$S3_BUCKET/application.zip --region us-east-1 
 
           # Create a new application version in Elastic Beanstalk
           aws elasticbeanstalk create-application-version --application-name about-me-chat-bot-env \
             --version-label "$APP_VERSION" \
             --source-bundle S3Bucket="$S3_BUCKET",S3Key="application.zip" \
             --region us-east-1
+
+          # Wait for the application version to be processed before deploying
+          echo "Waiting for Elastic Beanstalk to process the application version..."
+          sleep 60  # Wait 60 seconds for the application version to be available
 
           # Deploy the latest application version
           eb deploy about-me-chat-bot-env --version "$APP_VERSION" --timeout 20 --region us-east-1
