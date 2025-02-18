@@ -106,7 +106,7 @@ def chat():
 
         # OpenAI API request
         response = openai_client.chat.completions.create(
-            model="gpt-4-o-mini",
+            model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_input}
