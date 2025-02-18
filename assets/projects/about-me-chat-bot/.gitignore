@@ -1,5 +1,8 @@
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+.elasticbeanstalk/
+.terraform/
+.ebextensions/
 venv/
 .DS_Store
 lambda_function.py.zip
