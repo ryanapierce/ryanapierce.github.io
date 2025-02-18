@@ -1,4 +1,4 @@
-name: Deploy to AWS Elastic Beanstalk
+name: Deploy About Me Chatbot to AWS Elastic Beanstalk
 
 on:
   push:
@@ -24,6 +24,7 @@ jobs:
           source venv/bin/activate
           pip install --upgrade pip setuptools wheel
           pip install -r assets/projects/about-me-chat-bot/requirements.txt --target .
+          cp assets/projects/about-me-chat-bot/requirements.txt .
 
       - name: Set AWS Credentials
         env:
@@ -40,18 +41,18 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH
           eb --version
 
-      - name: Package Application from `assets/projects/about-me-chat-bot`
+      - name: Initialize Elastic Beanstalk
         run: |
           cd assets/projects/about-me-chat-bot
-          zip -r application.zip . -x "*.git*" "venv/*" "*.DS_Store"
-          mv application.zip ../../..
+          eb init about-me-chat-bot-env --region us-east-1 --platform "Python 3.11 running on 64bit Amazon Linux 2023" --no-interactive
 
-      - name: Deploy to Elastic Beanstalk
+      - name: Package and Deploy from `assets/projects/about-me-chat-bot`
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_REGION: "us-east-1"
         run: |
-          source venv/bin/activate
-          echo "y" | eb init about-me-chat-bot-env --region us-east-1 --platform "Python 3.11 running on 64bit Amazon Linux 2023"
+          cd assets/projects/about-me-chat-bot
+          zip -r application.zip . -x "*.git*" "venv/*" "*.DS_Store"
+          mv application.zip ../../..
           eb deploy about-me-chat-bot-env --timeout 20 --region us-east-1
