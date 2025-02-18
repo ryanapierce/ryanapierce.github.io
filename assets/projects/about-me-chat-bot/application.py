@@ -16,11 +16,11 @@ logging.basicConfig(level=logging.INFO)
 application = Flask(__name__, static_folder="static", template_folder="templates")
 CORS(application)
 
-# Setup rate limiter (limits each IP to 20 requests per minute)
+# Setup rate limiter (limits each IP to 10 requests per minute)
 limiter = Limiter(
     get_remote_address,
     app=application,
-    default_limits=["20 per minute"],
+    default_limits=["10 per minute"],
     storage_uri="memory://"
 )
 
@@ -86,7 +86,7 @@ def chat():
         if not user_input:
             return jsonify({"error": "Empty message"}), 400
 
-        logging.info(f"User Query: {user_input}")  # ✅ Log user input
+        logging.info(f"User Query: {user_input}")  
 
         # Load life_notes.json
         life_notes = load_json(LIFE_NOTES_PATH)
@@ -112,7 +112,7 @@ def chat():
                 max_tokens=200
             )
             chatbot_reply = response.choices[0].message.content
-            logging.info(f"Chatbot Response: {chatbot_reply}")  # ✅ Log chatbot response
+            logging.info(f"Chatbot Response: {chatbot_reply}")  
         except openai.APIError as e:
             logging.error(f"OpenAI API error: {e}")
             return jsonify({"error": "Chatbot service is currently unavailable due to an API error"}), 500
