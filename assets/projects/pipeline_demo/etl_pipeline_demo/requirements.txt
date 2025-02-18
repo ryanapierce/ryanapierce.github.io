@@ -46,7 +46,7 @@ apache-airflow>=2.10.3
 requests>=2.32.0
 google-cloud-sdk==0.2.1
 flask==2.2.2
-gunicorn==20.1.0
+gunicorn==22.0.0
 pandas==1.4.1
 sqlalchemy==1.4.39
 pyyaml==6.0
