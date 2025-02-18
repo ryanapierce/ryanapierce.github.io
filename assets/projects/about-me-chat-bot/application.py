@@ -1,20 +1,21 @@
-from flask import Flask, request, jsonify, render_template
-import openai
-import boto3
 import os
 import json
+import requests
+import logging
+import openai
+import boto3
 from botocore.exceptions import NoCredentialsError, PartialCredentialsError
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS, cross_origin
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-import logging
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 
 # Initialize Flask application
 application = Flask(__name__, static_folder="static", template_folder="templates")
-CORS(application)
+CORS(application)  # Enable CORS globally
 
 # Setup rate limiter (limits each IP to 10 requests per minute)
 limiter = Limiter(
@@ -67,18 +68,26 @@ def load_resumes(directory):
                     resumes[filename] = file.read()
     return resumes
 
-# Serve Home Page
+BACKEND_URL = "https://8y33u4e087.execute-api.us-east-1.amazonaws.com/prod/chat"
+logging.info(f"Using Backend URL: {BACKEND_URL}")
+
 @application.route("/")
 def home():
-    return render_template("ask_about_me.html") 
+    return render_template("ask_about_me.html", backend_url=BACKEND_URL)
 
-# Chatbot API with rate limiting
 @application.route("/api/chat", methods=["POST", "OPTIONS"])
 @cross_origin()
 @limiter.limit("10 per minute")
 def chat():
     """Handles user input and returns chatbot response"""
     try:
+        if request.method == "OPTIONS":
+            response = jsonify({"message": "CORS preflight successful"})
+            response.headers.add("Access-Control-Allow-Origin", "*")
+            response.headers.add("Access-Control-Allow-Methods", "OPTIONS, POST")
+            response.headers.add("Access-Control-Allow-Headers", "Content-Type, Authorization")
+            return response
+
         data = request.get_json()
         if not data or "messages" not in data or not data["messages"]:
             return jsonify({"error": "Invalid request format"}), 400

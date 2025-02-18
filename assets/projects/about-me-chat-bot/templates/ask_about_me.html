@@ -47,7 +47,6 @@
                     <dd><a href="tel:2483787139">(248) 378-7139</a></dd>
                     <dt>Email</dt>
                     <dd><a href="mailto:rpierce521@gmail.com">rpierce521@gmail.com</a></dd>
-
                     <a href="https://www.linkedin.com/in/ryan-a-pierce" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
                     <a href="https://github.com/ryanapierce" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
                 </dl>
@@ -58,10 +57,9 @@
 
     <script>
         $(document).ready(function() {
-            // API Gateway URL for Chatbot
+            // Dynamically set backend URL from Flask
             const BACKEND_URL = "https://8y33u4e087.execute-api.us-east-1.amazonaws.com/prod/chat";
 
-            // Function to escape HTML for security
             function escapeHtml(text) {
                 return text.replace(/[&<>"'\/]/g, function (s) {
                     var entityMap = {
@@ -76,7 +74,6 @@
                 });
             }
 
-            // Function to handle user input and send it to the chatbot API
             function sendMessage() {
                 var userInput = $('#userInput').val().trim();
                 if (!userInput) {
@@ -84,21 +81,14 @@
                     return;
                 }
 
-                // Display the user's question
                 $('#chatOutput').append('<p><strong>You:</strong> ' + escapeHtml(userInput) + '</p>');
 
                 $.ajax({
                     url: BACKEND_URL,
                     type: 'POST',
                     contentType: 'application/json',
-                    crossDomain: true,
-                    headers: {
-                        "Access-Control-Allow-Origin": "*",
-                        "Access-Control-Allow-Methods": "POST, OPTIONS",
-                        "Access-Control-Allow-Headers": "Content-Type"
-                    },
                     data: JSON.stringify({
-                        query: userInput
+                        messages: [{ role: "user", content: userInput }] 
                     }),
                     success: function(response) {
                         if (response && response.response) {
@@ -117,10 +107,8 @@
                 });
             }
 
-            // Button click event for sending messages
             $('#sendButton').click(sendMessage);
 
-            // Allow pressing Enter to send message (Shift+Enter for new line)
             $('#userInput').keypress(function(event) {
                 if (event.which === 13 && !event.shiftKey) {
                     event.preventDefault();
@@ -128,7 +116,6 @@
                 }
             });
 
-            // Button click event to clear chat
             $('#clearButton').click(function() {
                 $('#chatOutput').empty();
             });
