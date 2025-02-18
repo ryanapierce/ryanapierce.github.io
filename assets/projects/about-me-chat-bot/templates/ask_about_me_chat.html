@@ -83,10 +83,17 @@
                     crossDomain: true,
                     data: JSON.stringify({ query: userInput }),
                     success: function(response) {
-                        if (response && response.response) {
-                            $('#chatOutput').append('<p><strong>Chatbot:</strong> ' + escapeHtml(response.response) + '</p>');
-                        } else {
-                            $('#chatOutput').append('<p><strong>Chatbot:</strong> Sorry, I couldn\'t process that request.</p>');
+                        console.log("API Response:", response); // Debugging
+                        try {
+                            var jsonResponse = JSON.parse(response);
+                            if (jsonResponse.response) {
+                                $('#chatOutput').append('<p><strong>Chatbot:</strong> ' + escapeHtml(jsonResponse.response) + '</p>');
+                            } else {
+                                $('#chatOutput').append('<p><strong>Chatbot:</strong> No valid response received.</p>');
+                            }
+                        } catch (e) {
+                            console.error("Parsing Error:", e);
+                            $('#chatOutput').append('<p><strong>Chatbot:</strong> Error processing response.</p>');
                         }
                     },
                     error: function(xhr, status, error) {
