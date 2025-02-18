@@ -38,7 +38,13 @@ jobs:
         run: |
           pip install --upgrade awsebcli
           echo "$HOME/.local/bin" >> $GITHUB_PATH
-          eb --version  # Verify installation
+          eb --version
+
+      - name: Package Application from `assets/projects/about-me-chat-bot`
+        run: |
+          cd assets/projects/about-me-chat-bot
+          zip -r application.zip . -x "*.git*" "venv/*" "*.DS_Store"
+          mv application.zip ../../..
 
       - name: Deploy to Elastic Beanstalk
         env:
