@@ -1,2 +1,7 @@
 venv/
 projects/notes.txt
+projects/about-me-chat-bot/venv/
+projects/about-me-chat-bot/terraform/
+projects/about-me-chat-bot/.elasticbeanstalk
+projects/about-me-chat-bot/.ebextensions
+projects/about-me-chat-bot/new-key-pair.pem
