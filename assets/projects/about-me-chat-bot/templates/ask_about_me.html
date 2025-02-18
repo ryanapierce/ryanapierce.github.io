@@ -88,6 +88,12 @@
                     url: BACKEND_URL,
                     type: 'POST',
                     contentType: 'application/json',
+                    crossDomain: true,
+                    headers: {
+                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Methods": "POST, OPTIONS",
+                        "Access-Control-Allow-Headers": "Content-Type"
+                    },
                     data: JSON.stringify({
                         query: userInput
                     }),
