@@ -1,6 +1,14 @@
 {
     "personal_projects": [
-        {
+          { 
+            "title": "Portfolio Website",
+            "description": "Developed a personal portfolio website to showcase my projects, skills, and experience. The website is built using HTML, CSS, and JavaScript, with a responsive design that adapts to different screen sizes."
+          },
+          {
+            "title": "About Me Chat Bot",
+            "description": "Created a chat bot that provides information about me, including my background, skills, projects, and interests. The chat bot is built using HTML/CSS, JavaScript, AWS Lambda, and API Gateway using Open AI's API and can respond to user queries with relevant information."
+          },
+          {
             "title": "Pair Trading Algorithm",
             "description": "Developed an algorithm to identify suitable asset pairs using historical data from Yahoo Finance. The algorithm tracks price movements and calculates the spread to trigger trades when conditions are met. Results are visualized using line graphs and heatmaps."
           },
@@ -206,5 +214,13 @@
       "Product Manager",
       "Consultant",
       "Analytics Engineer"
-    ]
-  }
+    ],
+    "military": {
+      "branch": "Army",
+      "service": "National Guard",
+      "enlisted_date": "2014-10-27",
+      "commissioned_date": "2020-12-18",
+      "military_occupation_specialty": "Finance",
+      "military_education": ["Finance Basic Officer Leadership Course", "Basic Combat Training", "Advanced Individual Trinaing: 94F", "Contracting Officer Representative Course", "Commmand Financial Specialist Course"]
+    }
+}
