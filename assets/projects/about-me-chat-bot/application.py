@@ -4,7 +4,7 @@ import boto3
 import os
 import json
 from botocore.exceptions import NoCredentialsError, PartialCredentialsError
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 import logging
@@ -73,7 +73,8 @@ def home():
     return render_template("ask_about_me.html") 
 
 # Chatbot API with rate limiting
-@application.route("/api/chat", methods=["POST"])
+@application.route("/api/chat", methods=["POST", "OPTIONS"])
+@cross_origin()
 @limiter.limit("10 per minute")
 def chat():
     """Handles user input and returns chatbot response"""
