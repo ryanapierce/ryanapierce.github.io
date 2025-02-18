@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me Chatbot - Ryan Pierce</title>
+    <link rel="stylesheet" href="../static/css/main.css">
+    <link rel="stylesheet" href="../static/css/noscript.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <header id="header">
+            <h1>Chat with Ryan Pierce's Experience Bot</h1>
+            <p>Ask about my experience and background.</p>
+        </header>
+        <div id="main">
+            <section id="content" class="main">
+                <textarea id="userInput" rows="4" placeholder="Type your question here..."></textarea>
+                <br>
+                <button id="sendButton" class="button primary">Ask</button>
+                <button id="clearButton" class="button primary">Clear Chat</button>
+                <div id="chatOutput"></div>
+                <p class="disclaimer">
+                    <br>
+                    <strong>Disclaimer:</strong> This chatbot is powered by AI (OpenAI's GPT-3.5 Turbo) and provides responses based on Ryan Pierce's resume and life notes. The information provided by the chatbot is for informational purposes only and may not be entirely accurate or up-to-date.
+                </p>
+            </section>
+            <ul class="actions stacked">
+                <li>
+                    <a href="index.html" class="button primary">Return to Homepage</a>
+                </li>
+            </ul>
+        </div>
+        <footer id="footer">
+            <section>
+                <br><br>
+                <ul class="actions">
+                    <li><a href="assets/images/Ryan Pierce_Resume.pdf" class="button secondary">Click here for printable resume</a></li>
+                </ul>
+            </section>
+            <section>
+                <dl class="alt">
+                    <h2>Ryan Pierce</h2>
+                    <dt>Location</dt>
+                    <dd>Tecumseh, MI &bull; USA</dd>
+                    <dt>Phone</dt>
+                    <dd><a href="tel:2483787139">(248) 378-7139</a></dd>
+                    <dt>Email</dt>
+                    <dd><a href="mailto:rpierce521@gmail.com">rpierce521@gmail.com</a></dd>
+                    <a href="https://www.linkedin.com/in/ryan-a-pierce" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
+                    <a href="https://github.com/ryanapierce" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
+                </dl>
+            </section>
+            <p class="copyright">&copy; Ryan Pierce. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+        </footer>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            const BACKEND_URL = "https://8y33u4e087.execute-api.us-east-1.amazonaws.com/prod/chat";
+
+            function sendMessage() {
+            var userInput = $('#userInput').val().trim();
+            if (!userInput) {
+                alert('Please enter a question or comment.');
+                return;
+            }
+
+            $('#chatOutput').append('<p><strong>You:</strong> ' + userInput + '</p>');
+
+            $.ajax({
+                url: BACKEND_URL,
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    query: userInput
+                }),
+                success: function(response) {
+                    if (response && response.response) {
+                        $('#chatOutput').append('<p><strong>Chatbot:</strong> ' + response.response + '</p>');
+                    } else {
+                        $('#chatOutput').append('<p><strong>Chatbot:</strong> Error processing request.</p>');
+                    }
+                    $('#userInput').val('');
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', error);
+                    console.error('Status:', status);
+                    console.error('Response:', xhr.responseText);
+                    alert('Error communicating with the chatbot.');
+                }
+            });
+        }
+
+            $('#sendButton').click(sendMessage);
+            $('#clearButton').click(function() { $('#chatOutput').empty(); });
+        });
+    </script>
+</body>
+</html>
