@@ -38,6 +38,11 @@
                     <a href="https://ryanpierce.dev/index.html" class="button primary">Return to Homepage</a>
                 </li>
             </ul>
+            <ul class="actions stacked">
+                <li>
+                    <a href="https://ryanpierce.dev/projects.html" class="button primary">Return to Projects</a>
+                </li>
+            </ul>
         </div>
         <footer id="footer">
             <section>
@@ -66,6 +71,17 @@
     <script>
         $(document).ready(function() {
             const BACKEND_URL = "https://8y33u4e087.execute-api.us-east-1.amazonaws.com/prod/chat";
+
+            function escapeHtml(text) {
+                var map = {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                };
+                return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+            }
     
             function sendMessage() {
                 var userInput = $('#userInput').val().trim();
@@ -85,7 +101,7 @@
                     success: function(response) {
                         console.log("API Response:", response); // Debugging
                         try {
-                            var jsonResponse = JSON.parse(response);
+                            var jsonResponse = typeof response === "string" ? JSON.parse(response) : response;
                             if (jsonResponse.response) {
                                 $('#chatOutput').append('<p><strong>Chatbot:</strong> ' + escapeHtml(jsonResponse.response) + '</p>');
                             } else {
