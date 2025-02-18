@@ -23,21 +23,16 @@ jobs:
           python -m venv venv
           source venv/bin/activate
           pip install --upgrade pip setuptools wheel
-          pip install -r requirements.txt --target .  # ✅ Ensures dependencies are installed inside the package
+          pip install -r requirements.txt
 
-      - name: Manually Set AWS Credentials
+      - name: Set AWS Credentials
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
-          export AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
-          export AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
           export AWS_REGION=us-east-1
           aws configure list
           aws sts get-caller-identity
-
-      - name: Check AWS CLI Version
-        run: aws --version
 
       - name: Install AWS Elastic Beanstalk CLI
         run: |
@@ -53,48 +48,4 @@ jobs:
         run: |
           source venv/bin/activate
           echo "y" | eb init -p "Python 3.11 running on 64bit Amazon Linux 2023" about-me-chat-bot-env --region us-east-1
-
-          # Generate a unique application version name
-          APP_VERSION="app-$(date +%Y%m%d%H%M%S)"
-
-          # Manually create the deployment package
-          zip -r application.zip . -x "*.git*" "venv/*" "*.DS_Store"
-
-          # Upload ZIP file to S3
-          S3_BUCKET="elasticbeanstalk-us-east-1-586794441233"
-          aws s3 cp application.zip s3://$S3_BUCKET/application.zip --region us-east-1
-
-          # Create a new application version in Elastic Beanstalk
-          aws elasticbeanstalk create-application-version --application-name about-me-chat-bot-env \
-            --version-label "$APP_VERSION" \
-            --source-bundle S3Bucket="$S3_BUCKET",S3Key="application.zip" \
-            --region us-east-1
-
-          # Wait until the application version is processed
-          echo "Waiting for Elastic Beanstalk to process the application version..."
-          while true; do
-              STATUS=$(aws elasticbeanstalk describe-application-versions \
-                --application-name about-me-chat-bot-env \
-                --version-label "$APP_VERSION" \
-                --region us-east-1 \
-                --query "ApplicationVersions[0].Status" \
-                --output text)
-
-              if [[ "$STATUS" == "Processed" ]]; then
-                  echo "Application version is ready!"
-                  break
-              fi
-
-              echo "Application version is still processing... waiting..."
-              sleep 10
-          done
-
-          # Explicitly deploy the latest application version
-          eb deploy about-me-chat-bot-env --version "$APP_VERSION" --timeout 20 --region us-east-1
-
-      - name: Retrieve Elastic Beanstalk Logs if Deployment Fails
-        if: failure()
-        run: |
-          echo "Deployment failed. Fetching logs from Elastic Beanstalk..."
-          eb logs about-me-chat-bot-env
-
+          eb deploy about-me-chat-bot-env --timeout 20 --region us-east-1
