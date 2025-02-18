@@ -59,43 +59,43 @@
     <script>
         $(document).ready(function() {
             const BACKEND_URL = "https://8y33u4e087.execute-api.us-east-1.amazonaws.com/prod/chat";
-
+    
             function sendMessage() {
-            var userInput = $('#userInput').val().trim();
-            if (!userInput) {
-                alert('Please enter a question or comment.');
-                return;
-            }
-
-            $('#chatOutput').append('<p><strong>You:</strong> ' + userInput + '</p>');
-
-            $.ajax({
-                url: BACKEND_URL,
-                type: 'POST',
-                contentType: 'application/json',
-                data: JSON.stringify({
-                    query: userInput
-                }),
-                success: function(response) {
-                    if (response && response.response) {
-                        $('#chatOutput').append('<p><strong>Chatbot:</strong> ' + response.response + '</p>');
-                    } else {
-                        $('#chatOutput').append('<p><strong>Chatbot:</strong> Error processing request.</p>');
-                    }
-                    $('#userInput').val('');
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error:', error);
-                    console.error('Status:', status);
-                    console.error('Response:', xhr.responseText);
-                    alert('Error communicating with the chatbot.');
+                var userInput = $('#userInput').val().trim();
+                if (!userInput) {
+                    alert('Please enter a question or comment.');
+                    return;
                 }
-            });
-        }
-
+    
+                $('#chatOutput').append('<p><strong>You:</strong> ' + userInput + '</p>');
+    
+                $.ajax({
+                    url: BACKEND_URL,
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        query: userInput
+                    }),
+                    success: function(response) {
+                        if (response && response.response) {
+                            $('#chatOutput').append('<p><strong>Chatbot:</strong> ' + response.response + '</p>');
+                        } else {
+                            $('#chatOutput').append('<p><strong>Chatbot:</strong> Error processing request.</p>');
+                        }
+                        $('#userInput').val('');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error:', error);
+                        console.error('Status:', status);
+                        console.error('Response:', xhr.responseText);
+                        alert('Error communicating with the chatbot.');
+                    }
+                });
+            }
+    
             $('#sendButton').click(sendMessage);
             $('#clearButton').click(function() { $('#chatOutput').empty(); });
         });
-    </script>
+    </script>    
 </body>
 </html>
