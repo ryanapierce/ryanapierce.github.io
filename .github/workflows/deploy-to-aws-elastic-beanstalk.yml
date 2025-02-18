@@ -26,7 +26,7 @@ jobs:
           pip install -r assets/projects/about-me-chat-bot/requirements.txt --target .
           cp assets/projects/about-me-chat-bot/requirements.txt .
 
-      - name: Set AWS Credentials
+      - name: Set AWS Credentials & Configure AWS CLI
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -34,9 +34,6 @@ jobs:
           export AWS_REGION=us-east-1
           aws configure list
           aws sts get-caller-identity
-
-      - name: Install AWS Elastic Beanstalk CLI
-        run: |
           pip install --upgrade awsebcli
           echo "$HOME/.local/bin" >> $GITHUB_PATH
           eb --version
