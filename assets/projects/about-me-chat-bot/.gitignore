@@ -4,7 +4,6 @@
 venv/
 new-key-pair.pem
 .DS_Store
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+lambda_function.py.zip
+lambda_function.py
+lambda_package/*
