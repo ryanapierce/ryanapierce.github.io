@@ -57,68 +57,43 @@
 
     <script>
         $(document).ready(function() {
-            // Dynamically set backend URL from Flask
             const BACKEND_URL = "https://8y33u4e087.execute-api.us-east-1.amazonaws.com/prod/chat";
 
-            function escapeHtml(text) {
-                return text.replace(/[&<>"'\/]/g, function (s) {
-                    var entityMap = {
-                        '&': '&amp;',
-                        '<': '&lt;',
-                        '>': '&gt;',
-                        '"': '&quot;',
-                        "'": '&#39;',
-                        '/': '&#x2F;'
-                    };
-                    return entityMap[s];
-                });
-            }
-
             function sendMessage() {
-                var userInput = $('#userInput').val().trim();
-                if (!userInput) {
-                    alert('Please enter a question or comment.');
-                    return;
-                }
-
-                $('#chatOutput').append('<p><strong>You:</strong> ' + escapeHtml(userInput) + '</p>');
-
-                $.ajax({
-                    url: BACKEND_URL,
-                    type: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify({
-                        messages: [{ role: "user", content: userInput }] 
-                    }),
-                    success: function(response) {
-                        if (response && response.response) {
-                            $('#chatOutput').append('<p><strong>Chatbot:</strong> ' + escapeHtml(response.response) + '</p>');
-                        } else {
-                            $('#chatOutput').append('<p><strong>Chatbot:</strong> Sorry, I couldn\'t process that request.</p>');
-                        }
-                        $('#userInput').val('');
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Error:', error);
-                        console.error('Status:', status);
-                        console.error('Response:', xhr.responseText);
-                        alert('Error communicating with the chatbot. Please check the console for more details.');
-                    }
-                });
+            var userInput = $('#userInput').val().trim();
+            if (!userInput) {
+                alert('Please enter a question or comment.');
+                return;
             }
+
+            $('#chatOutput').append('<p><strong>You:</strong> ' + userInput + '</p>');
+
+            $.ajax({
+                url: BACKEND_URL,
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    query: userInput // ✅ Correct JSON format for Lambda function
+                }),
+                success: function(response) {
+                    if (response && response.response) {
+                        $('#chatOutput').append('<p><strong>Chatbot:</strong> ' + response.response + '</p>');
+                    } else {
+                        $('#chatOutput').append('<p><strong>Chatbot:</strong> Error processing request.</p>');
+                    }
+                    $('#userInput').val('');
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error:', error);
+                    console.error('Status:', status);
+                    console.error('Response:', xhr.responseText);
+                    alert('Error communicating with the chatbot.');
+                }
+            });
+        }
 
             $('#sendButton').click(sendMessage);
-
-            $('#userInput').keypress(function(event) {
-                if (event.which === 13 && !event.shiftKey) {
-                    event.preventDefault();
-                    sendMessage();
-                }
-            });
-
-            $('#clearButton').click(function() {
-                $('#chatOutput').empty();
-            });
+            $('#clearButton').click(function() { $('#chatOutput').empty(); });
         });
     </script>
 </body>
