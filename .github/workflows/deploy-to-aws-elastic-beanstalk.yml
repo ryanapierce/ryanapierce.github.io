@@ -55,6 +55,15 @@ jobs:
         run: |
           source venv/bin/activate
           echo "y" | eb init -p "Python 3.11 running on 64bit Amazon Linux 2023" about-me-chat-bot-env --region us-east-1
-          eb deploy about-me-chat-bot-env --timeout 20
 
+          # Generate a unique application version name
+          APP_VERSION="app-$(date +%Y%m%d%H%M%S)"
+          
+          # Package the application
+          eb package -o application.zip
+          
+          # Explicitly create the application version
+          eb appversion create "$APP_VERSION" --source application.zip
 
+          # Deploy the latest application version
+          eb deploy about-me-chat-bot-env --version "$APP_VERSION" --timeout 20
