@@ -26,7 +26,7 @@ jobs:
           pip install -r assets/projects/about-me-chat-bot/requirements.txt --target .
           cp assets/projects/about-me-chat-bot/requirements.txt .
 
-      - name: Set AWS Credentials
+      - name: Set AWS Credentials & Configure AWS CLI
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -34,9 +34,6 @@ jobs:
           export AWS_REGION=us-east-1
           aws configure list
           aws sts get-caller-identity
-
-      - name: Install AWS Elastic Beanstalk CLI
-        run: |
           pip install --upgrade awsebcli
           echo "$HOME/.local/bin" >> $GITHUB_PATH
           eb --version
@@ -45,11 +42,24 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: "us-east-1"
         run: |
-          cd assets/projects/about-me-chat-bot
-          eb init about-me-chat-bot-env --region us-east-1 --platform "Python 3.11 running on 64bit Amazon Linux 2023"
+          if [ ! -d ".elasticbeanstalk" ]; then
+            cd assets/projects/about-me-chat-bot
+            eb init -p "Python 3.11 running on 64bit Amazon Linux 2023" about-me-chat-bot --region us-east-1
+          fi
 
+      - name: Check if Environment Exists
+        id: check_env
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          if eb status about-me-chat-bot-env; then
+            echo "env_exists=true" >> $GITHUB_ENV
+          else
+            echo "env_exists=false" >> $GITHUB_ENV
+          fi
+  
       - name: Package and Deploy from `assets/projects/about-me-chat-bot`
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -59,4 +69,8 @@ jobs:
           cd assets/projects/about-me-chat-bot
           zip -r application.zip . -x "*.git*" "venv/*" "*.DS_Store"
           mv application.zip ../../..
-          eb deploy about-me-chat-bot-env --timeout 20 --region us-east-1
+          if [ "${{ env.env_exists }}" = "true" ]; then
+            eb deploy about-me-chat-bot-env --timeout 20 --region us-east-1
+          else
+            eb create about-me-chat-bot-env --platform "Python 3.11 running on 64bit Amazon Linux 2023" --region us-east-1
+          fi
