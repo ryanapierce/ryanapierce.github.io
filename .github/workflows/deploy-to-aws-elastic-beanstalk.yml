@@ -47,4 +47,9 @@ jobs:
           AWS_REGION: "us-east-1"
         run: |
           source venv/bin/activate
+          echo "y" | eb init about-me-chat-bot-env --region us-east-1
+
+      - name: Deploy to Elastic Beanstalk
+        run: |
+          source venv/bin/activate
           eb deploy about-me-chat-bot-env --timeout 20 --region us-east-1
