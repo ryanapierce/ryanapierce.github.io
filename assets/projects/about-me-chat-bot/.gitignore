@@ -7,3 +7,6 @@ lambda_function.py
 lambda_package/*
 data/*
 new-key-pair.pem
+Procfile
+projects/notes.txt
+terraform/*
