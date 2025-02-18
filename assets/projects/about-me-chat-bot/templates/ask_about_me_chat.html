@@ -120,6 +120,13 @@
     
             $('#sendButton').click(sendMessage);
             $('#clearButton').click(function() { $('#chatOutput').empty(); });
+
+            $('#userInput').keypress(function(event) {
+                if (event.which === 13 && !event.shiftKey) {
+                    event.preventDefault();
+                    sendMessage();
+                }
+            });
         });
     </script>    
 </body>

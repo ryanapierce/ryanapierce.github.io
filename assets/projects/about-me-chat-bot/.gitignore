@@ -6,3 +6,4 @@ new-key-pair.pem
 lambda_function.py.zip
 lambda_function.py
 lambda_package/*
+data/*
