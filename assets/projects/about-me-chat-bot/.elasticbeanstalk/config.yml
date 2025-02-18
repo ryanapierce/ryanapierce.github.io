@@ -1,0 +1,26 @@
+branch-defaults:
+  default:
+    environment: about-me-chat-bot-env
+    group_suffix: null
+  development:
+    environment: about-me-chat-bot-env
+environment-defaults:
+  about-me-chat-bot-env:
+    branch: null
+    repository: null
+global:
+  application_name: about-me-chat-bot-env
+  branch: null
+  default_ec2_keyname: new-key-pair
+  default_platform: Python 3.11 running on 64bit Amazon Linux 2023
+  default_region: us-east-1
+  deploy:
+    artifact: application.zip
+  include_git_submodules: true
+  instance_profile: null
+  platform_name: null
+  platform_version: null
+  profile: null
+  repository: null
+  sc: git
+  workspace_type: Application
