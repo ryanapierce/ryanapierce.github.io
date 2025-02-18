@@ -1,4 +1,4 @@
-This project is an **AI-powered chatbot** designed to provide insights into **Ryan Pierce’s professional background, experience, and expertise.** The chatbot is integrated with OpenAI’s **GPT-4-turbo**, utilizing structured data from **resume documents** and **life notes** to generate personalized responses.  
+This project is an **AI-powered chatbot** designed to provide insights into **Ryan Pierce’s professional background, experience, and expertise.** The chatbot is integrated with OpenAI’s **GPT-3.5-turbo**, utilizing structured data from **resume documents** and **life notes** to generate personalized responses.  
 
 ---
 
@@ -44,7 +44,7 @@ This project is an **AI-powered chatbot** designed to provide insights into **Ry
 ---
 
 ## **🌐 Live Demo & Source Code**
-🎯 **Chatbot Link:** [Interact with the chatbot](assets/projects/about-me-chat-bot/templates/ask_about_me_chat.html)  
-💻 **Source Code:** [GitHub Repository](https://github.com/ryanapierce/ryanapierce.github.io/assets/projects/about-me-chat-bot)  
+🎯 **Chatbot Link:** [Interact with the chatbot](https://ryanpierce.dev/assets/projects/about-me-chat-bot/templates/ask_about_me_chat.html)  
+💻 **Source Code:** [GitHub Repository](https://github.com/ryanapierce/ryanapierce.github.io/tree/7bf3353f378c46907483b118f185d6afbeeb55a9/assets/projects/about-me-chat-bot)  
 
 ---
