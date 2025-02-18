@@ -41,15 +41,6 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH
           eb --version
 
-      - name: Initialize Elastic Beanstalk
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: "us-east-1"
-        run: |
-          cd assets/projects/about-me-chat-bot
-          eb init about-me-chat-bot-env --region us-east-1 --platform "Python 3.11 running on 64bit Amazon Linux 2023"
-
       - name: Package and Deploy from `assets/projects/about-me-chat-bot`
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
