@@ -44,7 +44,7 @@ jobs:
       - name: Initialize Elastic Beanstalk
         run: |
           cd assets/projects/about-me-chat-bot
-          eb init about-me-chat-bot-env --region us-east-1 --platform "Python 3.11 running on 64bit Amazon Linux 2023" --no-interactive
+          eb init about-me-chat-bot-env --region us-east-1 --platform "Python 3.11 running on 64bit Amazon Linux 2023"
 
       - name: Package and Deploy from `assets/projects/about-me-chat-bot`
         env:
