@@ -23,7 +23,8 @@ section, summary, time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;}
+	vertical-align: baseline;
+	margin-bottom: 20px;}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -91,6 +92,7 @@ input, select, textarea {
 
 		html, body {
 			min-width: 320px;
+			overflow-x: hidden;
 		}
 
 	}
@@ -1583,6 +1585,30 @@ input, select, textarea {
 		}
 
 		@media screen and (max-width: 480px) {
+
+			section {
+				margin-bottom: 15px;
+			}
+
+			.actions.stacked {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				width: 100%;
+			}
+		
+			.actions.stacked li {
+				width: 100%;
+				text-align: center;
+			}
+		
+			.actions.stacked li a {
+				display: block !important;
+				width: 90% !important; /* Prevents touching edges */
+				max-width: 1opx !important;
+				margin-bottom: 10px !important;
+				text-align: center !important;
+			}
 
 			.row {
 				display: flex;
@@ -3755,6 +3781,7 @@ input, select, textarea {
 		width: 64em;
 		max-width: calc(100% - 4em);
 		padding: 1em;
+		padding-bottom: 0;
 		background-color: #f7f7f7;
 		border-top-left-radius: 0.25em;
 		border-top-right-radius: 0.25em;
@@ -3937,7 +3964,18 @@ input, select, textarea {
 		@media screen and (max-width: 736px) {
 
 			#nav {
-				display: none;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				width: 100%
+			}
+
+			#nav a {
+				display: block;
+				width: 90%;
+				text-align: center;
+				padding: 10px 0;
+				font-size: 1rem;
 			}
 
 				#nav + #main {
@@ -4405,6 +4443,17 @@ input, select, textarea {
 					margin: -3em 0 1.5em -1.5em;
 					width: calc(100% + 3em);
 				}
+
+		}
+
+		@media screen and (max-width: 420px) {
+
+			.image.main:first-child img {
+				max-width: 70% !important; /* Ensures image doesn't exceed container */
+				height: auto !important; /* Maintains aspect ratio */
+				display: block; /* Removes extra spacing */
+				margin: 0 auto; /* Centers the image */
+			}
 
 		}
 
