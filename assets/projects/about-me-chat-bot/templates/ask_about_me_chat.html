@@ -14,7 +14,15 @@
             color: #777;
         }
         .button {
-            margin-right: 10px;
+            margin-right: 8px;
+        }
+        
+        @media (max-width: 600px) {
+            .actions.stacked .button {
+                -ms-transform: scale(.9); /* IE 9 */
+                -webkit-transform: scale(.9); /* Chrome, Safari, Opera */
+                transform: scale(.9)
+            }
         }
     </style>
 </head>
