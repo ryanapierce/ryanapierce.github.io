@@ -3987,6 +3987,8 @@ input, select, textarea {
 
 			#nav ul {
 				background-color: #ffffff;
+				width: 110%;
+				;
 			}
 
 			#nav.alt {
