@@ -1,0 +1,79 @@
+name: Deploy About Me Chatbot to AWS Elastic Beanstalk
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Set Up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Create Virtual Environment and Install Dependencies
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip setuptools wheel
+          pip install -r assets/projects/about-me-chat-bot/requirements.txt --target .
+          cp assets/projects/about-me-chat-bot/requirements.txt .
+
+      - name: Set AWS Credentials & Configure AWS CLI
+        working-directory: assets/projects/about-me-chat-bot
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          export AWS_REGION=us-east-1
+          aws configure list
+          aws sts get-caller-identity
+          pip install --upgrade awsebcli
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          eb --version
+
+      - name: Initialize Elastic Beanstalk
+        working-directory: assets/projects/about-me-chat-bot
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          if [ ! -d ".elasticbeanstalk" ]; then
+            eb init -p "Python 3.11 running on 64bit Amazon Linux 2023" about-me-chat-bot --region us-east-1
+          fi
+
+      - name: Check if Environment Exists
+        id: check_env
+        working-directory: assets/projects/about-me-chat-bot
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+          if eb status about-me-chat-bot-env > /dev/null 2>&1; then
+            echo "env_exists=true" >> $GITHUB_ENV
+          else
+            echo "env_exists=false" >> $GITHUB_ENV
+          fi
+  
+      - name: Package and Deploy from `assets/projects/about-me-chat-bot`
+        working-directory: assets/projects/about-me-chat-bot
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: "us-east-1"
+          env_exists: ${{ env.env_exists }}
+        run: |
+          zip -r application.zip . -x "*.git*" "venv/*" "*.DS_Store"
+          mv application.zip ../../..
+          if [ "${{ env.env_exists }}" = "true" ]; then
+            eb deploy about-me-chat-bot-env --timeout 20 --region us-east-1
+          else
+            eb create about-me-chat-bot-env --platform "Python 3.11 running on 64bit Amazon Linux 2023" --region us-east-1
+          fi
