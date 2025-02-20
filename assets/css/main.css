@@ -3967,7 +3967,12 @@ input, select, textarea {
 				display: flex;
 				flex-direction: column;
 				align-items: center;
-				width: 100%
+				width: 100%;
+				-ms-transform: scale(.9); /* IE 9 */
+				-webkit-transform: scale(.9); /* Chrome, Safari, Opera */
+				transform: scale(.9);
+				background-color: #ffffff;
+				border-color: #000000;
 			}
 
 			#nav a {
@@ -3976,12 +3981,41 @@ input, select, textarea {
 				text-align: center;
 				padding: 10px 0;
 				font-size: 1rem;
+				background-color: #ffffff;
+				border-color: #000000;
+			}
+
+			#nav ul {
+				background-color: #ffffff;
+			}
+
+			#nav.alt {
+				background-color: #ffffff;
+				padding: 0%;
 			}
 
 				#nav + #main {
 					padding-top: 0;
+					background-color: #ffffff;
+					border-color: #000000;
 				}
 
+		}
+
+		@media screen and (max-width: 515px) {
+
+			#nav {
+				-ms-transform: scale(.85); /* IE 9 */
+				-webkit-transform: scale(.85); /* Chrome, Safari, Opera */
+				transform: scale(.85);
+				padding: 0%;
+				width: 100%;
+			}
+
+			#nav li a {
+				padding: 0px !important;
+				width: auto;
+			}
 		}
 
 /* Main */
