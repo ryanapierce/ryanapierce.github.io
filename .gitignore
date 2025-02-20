@@ -8,3 +8,5 @@ projects/about-me-chat-bot/test_api.py
 projects/about-me-chat-bot/.elasticbeanstalk
 projects/about-me-chat-bot/.ebextensions
 projects/about-me-chat-bot/new-key-pair.pem
+assets/projects/about-me-chat-bot/.DS_Store
+.DS_Store
