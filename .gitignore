@@ -1,2 +1,6 @@
 backend/.env
 assets/projects/about_me_chatbot/flask_app/.env
+assets/projects/about-me-chat-bot/data/.DS_Store
+assets/projects/.DS_Store
+assets/projects/about-me-chat-bot/data/archived_resumes/.DS_Store
+assets/projects/about-me-chat-bot/lambda_package/annotated_types-0.7.0.dist-info/INSTALLER 2

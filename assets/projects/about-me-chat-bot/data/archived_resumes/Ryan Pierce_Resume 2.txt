@@ -1,0 +1,54 @@
+Ryan Pierce
+(248)-378-7139  rpierce521@gmail.com  www.linkedin.com/in/ryan-a-pierce
+
+Education 
+Eastern Michigan University                                                                                                                     Sept 2017-Dec 2020
+Bachelors of Business Administration, Accounting & Information Systems 	                
+GPA: 3.45  
+
+Washtenaw Community College			    	                                                                       Aug 2012-July 2017
+Associates Degree, Criminal Justice
+GPA: 3.0
+Activities: ROTC, Endurance Runner, Rec Basketball, EMU Mentor Collective 
+
+Objective 
+Accounting Information Systems major seeking a position that will further my professional development while utilizing my diverse background in multiple industries - automotive, business communications, and military operations. I’m a fast learner who is receptive to coaching, noted for ability to problem solve effectively through the utilization of emotional intelligence and analytical thinking.
+
+Experience Highlights
+Ford Motor Company, Service Engineering Operations Intern - Dearborn, MI                                         Jun 2020-Present
+Develop dashboards, using R, to help management better analyze and visualize data to assist in decision making.
+Integrate HTML, CSS, and JavaScript into program to enhance appearance and quality of dashboard.
+Present work to management to obtain feedback and improve current working files and programs.
+Utilize Alteryx to automate various data management processes.
+
+Army National Guard, S3 (Operations) Assistant - Howell, MI                          		                        Oct 2014-Present
+Assist in the facilitation and planning of on-going and future operations for a 430-Soldier Battalion.
+Responsible for asset management, including electronic equipment repair and service. 
+Develop and distribute Operations Orders to extend guidance to subordinate units.
+Growing leadership abilities through mentoring soldiers to uphold and abiding by Army Doctrine and Regulations.
+
+Faurecia Interior Systems, Financial Analyst Intern, Saline, MI	                                   	             	       Mar 2019-Jun 2020
+Run and distribute various reports/KPIs to assist in internal analysis and decision making for a 1.4M sq ft plant.
+Perform capital maintenance, on $178M of equipment, to properly account for new and existing assets or tooling.
+Develop and implement Excel macros to semi-automate reporting, using VBA.
+ 
+Faurecia Interior Systems, Sales Analyst Intern, Southfield, MI			       	   	     Jun 2018-Mar 2019
+Utilized SAP to create pricing and scheduling agreements for production and service parts in 8 separate plants.
+Pulled and analyzed supplier data prior to entry, validation, and working-file updates.
+Ran various reports to analyze team performance and accuracy.
+
+Skills
+Data Analysis: 
+Utilized Microsoft Excel, SAP, and R for data organization, validation, analysis, and visualization
+Experience using C#, Java, and SQL in academic coursework 
+Develop reports to effectively analyze business performance
+Leadership:
+Onboarding new soldiers 
+ Mentor new EMU students through Mentor Collective program
+Developed clear & concise work instructions to assist future employees
+
+
+Detail Orientation: 
+Accuracy in data entry and reporting
+Adhere to strict military standards regarding appearance and documentation
+Composed reports with multiple large datasets
