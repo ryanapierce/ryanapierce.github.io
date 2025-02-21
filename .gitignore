@@ -1,12 +1,4 @@
-venv/
-projects/notes.txt
-projects/about-me-chat-bot/venv/
-projects/about-me-chat-bot/Procfile
-projects/about-me-chat-bot/__pycache__/
-projects/about-me-chat-bot/.gitignore
-projects/about-me-chat-bot/test_api.py
-projects/about-me-chat-bot/.elasticbeanstalk
-projects/about-me-chat-bot/.ebextensions
-projects/about-me-chat-bot/new-key-pair.pem
-assets/projects/about-me-chat-bot/.DS_Store
+assets/projects/about_me_chatbot/lambda_package/*
 .DS_Store
+.venv/
+venv/
