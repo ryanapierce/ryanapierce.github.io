@@ -1,0 +1,4 @@
+assets/projects/about_me_chatbot/lambda_package/*
+.DS_Store
+.venv/
+venv/
