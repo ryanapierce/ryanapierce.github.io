@@ -3889,6 +3889,7 @@ input, select, textarea {
 						box-shadow: inset 0 0 0 1px transparent;
 						color: #636363 !important;
 						font:inherit;
+						padding-top: 0.3em;
 					  }
 					  
 					  /* Add a red background color to navbar links on hover */
