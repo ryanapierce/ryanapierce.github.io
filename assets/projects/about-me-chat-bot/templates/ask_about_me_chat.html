@@ -103,7 +103,7 @@
                     return;
                 }
     
-                $('#chatOutput').append('<p><strong>You:</strong> ' + userInput + '</p>');
+                $('#chatOutput').append('<p><strong>You:</strong> ' + escapeHtml(userInput) + '</p>');
     
                 $.ajax({
                     url: "https://8y33u4e087.execute-api.us-east-1.amazonaws.com/prod/chat",
