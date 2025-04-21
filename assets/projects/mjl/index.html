@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sparkly Button</title>
+    <style>
+        :root {
+            --glitter: url("https://assets.codepen.io/13471/silver-glitter-background.png");
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+
+        main {
+            text-align: center;
+        }
+
+        .sparkles {
+            --clr: 260;
+            --shadows: 0%;
+            --shadowl: 0%;
+
+            font-size: max(2.5vw, 1.25rem);
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            border-radius: 5em;
+            background: linear-gradient(
+                0deg,
+                hsla(var(--clr), 100%, 70%) 0%,
+                hsla(var(--clr), 100%, 65%) 5%,
+                hsla(var(--clr), 80%, 35%) 15%,
+                hsla(var(--clr), 10%, 0%) 40%,
+                hsla(var(--clr), 25%, 12%) 90%
+            );
+            background-size: 200% 300%;
+            background-position: 0% 0%;
+            box-shadow: inset 0 0 2px hsla(var(--clr), 30%, 20%);
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            place-items: center;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            transform: translate(0px);
+            transition: all 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+            box-shadow: 0 -0.5em 0.5em transparent, 0 0.5em 0.5em transparent, 0 0.5em 0.5em transparent, 0 0.5em 0.5em transparent,
+                0 0.25em 0.3em -0.2em hsla(var(--clr), 0%, 0%, 0.5),
+                0 0.35em 0.75em hsla(var(--clr), 0%, 0%, 0.75);
+        }
+
+        .sparkles span {
+            grid-column: 1;
+            grid-row: 1;
+            background-image: linear-gradient(
+                hsl(calc(var(--clr) - 43), 27%, 85%) 0%,
+                hsl(calc(var(--clr) - 60), 22%, 80%) 19%,
+                hsl(calc(var(--clr) - 50), 20%, 75%) 30%,
+                hsl(calc(var(--clr) - 52), 36%, 98%) 43%,
+                hsl(var(--clr), 70%, 70%, 1) 51%,
+                hsl(var(--clr), 50%, 85%, 1) 52%,
+                rgb(255, 255, 255) 100%
+            );
+            background-size: 1em 3.45em;
+            color: rgb(214, 222, 226);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+            filter: drop-shadow(0 0 0.05em rgba(0,0,0,0.5)) drop-shadow(0 0.05em 0.05em rgba(0,0,0,0.5));
+            transition-timing-function: inherit;
+            transition-duration: inherit;
+            transition-delay: 0s;
+            padding: 0.75em 1.5em;
+            transform: translateY(0);
+            z-index: 10;
+        }
+
+        input {
+            position: absolute;
+            bottom: 30px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+    <main id="app">
+        <button class="sparkles">
+            <span>Sparkly Button</span>
+        </button>
+    </main>
+
+
+    <script>
+        var btn = document.querySelector("button");
+
+        setTimeout(() => {
+            btn.classList.add("over");
+            setTimeout(() => {
+                btn.classList.remove("over");
+            }, 2500);
+        }, 500);
+    </script>
+</body>
+</html>
