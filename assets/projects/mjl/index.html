@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Jen's Fan Page</title>
     <style>
         *,
@@ -289,6 +289,68 @@
             inline-size: 1.25em;
             translate: -25% -5%;
         }
+
+        /* General responsive adjustments */
+  body {
+    font-size: 16px; /* Base font size for scaling */
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.8em; /* Adjust heading size */
+    text-align: center;
+  }
+
+  button {
+    font-size: 1.2rem; /* Adjust button font size */
+    padding: 0.7em 1em;
+  }
+
+  .sparkle-button {
+    width: 100%; /* Ensure button scales properly */
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  /* Media query for screens smaller than 768px (e.g., iPhones) */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 1.5em;
+    }
+
+    button {
+      font-size: 1rem;
+      padding: 0.6em 0.8em;
+    }
+
+    .sparkle-button {
+      max-width: 250px;
+    }
+
+    .typewrite {
+      font-size: 1.2em;
+    }
+  }
+
+  /* Media query for screens smaller than 480px (e.g., iPhone SE) */
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.2em;
+    }
+
+    button {
+      font-size: 0.9rem;
+      padding: 0.5em 0.7em;
+    }
+
+    .sparkle-button {
+      max-width: 200px;
+    }
+
+    .typewrite {
+      font-size: 1em;
+    }
+  }
     </style>
 </head>
 <body>
