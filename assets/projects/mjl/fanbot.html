@@ -128,6 +128,7 @@
           <li><a href="fun_facts.html">Fun Facts</a></li>
           <li><a href="messages.html">Word Around Town</a></li>
           <li><a href="fanbot.html" class="active">FanBot</a></li>
+          <li><a href="assets/img/Jen_Plan.pdf">The Jen Plan</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -138,6 +139,7 @@
 
     </div>
   </header>
+  
 
   <main id="main">
     <section id="chat-section" class="chat-container">
@@ -215,6 +217,17 @@
         }
       });
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const mobileNavToggle = document.querySelector(".mobile-nav-toggle");
+    const navMenu = document.querySelector("#navmenu");
+
+    mobileNavToggle.addEventListener("click", function () {
+      navMenu.classList.toggle("navmenu-active");
+      this.classList.toggle("bi-list");
+      this.classList.toggle("bi-x");
+    });
+  });
   </script>
 
 </body>
