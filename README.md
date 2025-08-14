@@ -74,7 +74,7 @@ A conversational AI chatbot trained on my background, built using AWS Lambda, AP
 
 ## Contact
 
-- **Email**: [rpierce521@gmail.com](mailto:rpierce521@gmail.com)
+- **Email**: [ryanapierce.work@gmail.com](mailto:ryanapierce.work@gmail.com)
 - **Phone**: [248-378-7139](tel:2483787139)
 - **Location**: Tecumseh, MI, USA
 - **LinkedIn**: [Ryan Pierce](https://www.linkedin.com/in/ryan-a-pierce)
