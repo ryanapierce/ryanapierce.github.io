@@ -6,8 +6,8 @@
     <title>About Me Chatbot - Ryan Pierce</title>
     <link rel="stylesheet" href="../static/css/main.css">
     <link rel="stylesheet" href="../static/css/noscript.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta http-equiv="Content-Security-Policy" content="connect-src 'self' https://8y33u4e087.execute-api.us-east-1.amazonaws.com;">
+    <link rel="preconnect" href="https://8y33u4e087.execute-api.us-east-1.amazonaws.com">
     <meta property="og:image:secure_url" content="https://ryanpierce.dev/assets/images/openai.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -20,6 +20,17 @@
         }
         .button {
             margin-right: 8px;
+        }
+        .chat-message {
+            margin: 0 0 0.8em 0;
+        }
+        .chat-message.pending {
+            color: #777;
+            font-style: italic;
+        }
+        .button[disabled] {
+            cursor: wait;
+            opacity: 0.65;
         }
 
         @media (max-width: 600px) {
@@ -82,61 +93,100 @@
     </div>
 
     <script>
-        $(document).ready(function() {
+        document.addEventListener('DOMContentLoaded', function() {
             const BACKEND_URL = "https://8y33u4e087.execute-api.us-east-1.amazonaws.com/prod/chat";
+            const sendButton = document.getElementById('sendButton');
+            const clearButton = document.getElementById('clearButton');
+            const userInput = document.getElementById('userInput');
+            const chatOutput = document.getElementById('chatOutput');
+            let pendingRequest = null;
 
             function escapeHtml(text) {
-                var map = {
+                const map = {
                     '&': '&amp;',
                     '<': '&lt;',
                     '>': '&gt;',
                     '"': '&quot;',
                     "'": '&#039;'
                 };
-                return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+                return String(text).replace(/[&<>"']/g, function(m) { return map[m]; });
+            }
+
+            function appendMessage(label, text, className) {
+                const message = document.createElement('p');
+                message.className = 'chat-message' + (className ? ' ' + className : '');
+                message.innerHTML = '<strong>' + label + ':</strong> ' + escapeHtml(text);
+                chatOutput.appendChild(message);
+                message.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                return message;
+            }
+
+            function setPending(isPending) {
+                sendButton.disabled = isPending;
+                userInput.disabled = isPending;
+                sendButton.textContent = isPending ? 'Asking...' : 'Ask';
             }
     
-            function sendMessage() {
-                var userInput = $('#userInput').val().trim();
-                if (!userInput) {
-                    alert('Please enter a question or comment.');
+            async function sendMessage() {
+                const question = userInput.value.trim();
+                if (!question || pendingRequest) {
+                    if (!question) {
+                        alert('Please enter a question or comment.');
+                    }
                     return;
                 }
-    
-                $('#chatOutput').append('<p><strong>You:</strong> ' + escapeHtml(userInput) + '</p>');
-    
-                $.ajax({
-                    url: BACKEND_URL,
-                    type: "POST",
-                    contentType: "application/json",
-                    crossDomain: true,
-                    data: JSON.stringify({ query: userInput }),
-                    success: function(response) {
-                        console.log("API Response:", response); // Debugging
-                        try {
-                            var jsonResponse = typeof response === "string" ? JSON.parse(response) : response;
-                            if (jsonResponse.response) {
-                                $('#chatOutput').append('<p><strong>Chatbot:</strong> ' + escapeHtml(jsonResponse.response) + '</p>');
-                            } else {
-                                $('#chatOutput').append('<p><strong>Chatbot:</strong> No valid response received.</p>');
-                            }
-                        } catch (e) {
-                            console.error("Parsing Error:", e);
-                            $('#chatOutput').append('<p><strong>Chatbot:</strong> Error processing response.</p>');
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error("API Error:", xhr.responseText || error);
-                        $('#chatOutput').append('<p><strong>Chatbot:</strong> Error processing request.</p>');
-                    }
-                });
-            }
-    
-            $('#sendButton').click(sendMessage);
-            $('#clearButton').click(function() { $('#chatOutput').empty(); });
 
-            $('#userInput').keypress(function(event) {
-                if (event.which === 13 && !event.shiftKey) {
+                appendMessage('You', question);
+                const pendingMessage = appendMessage('Chatbot', 'Thinking...', 'pending');
+                userInput.value = '';
+                setPending(true);
+
+                const controller = new AbortController();
+                pendingRequest = controller;
+                const timeout = setTimeout(function() {
+                    controller.abort();
+                }, 30000);
+
+                try {
+                    const response = await fetch(BACKEND_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'text/plain;charset=UTF-8'
+                        },
+                        body: JSON.stringify({ query: question }),
+                        signal: controller.signal
+                    });
+                    const data = await response.json();
+                    pendingMessage.classList.remove('pending');
+
+                    if (!response.ok) {
+                        pendingMessage.innerHTML = '<strong>Chatbot:</strong> ' + escapeHtml(data.error || 'Error processing request.');
+                        return;
+                    }
+
+                    pendingMessage.innerHTML = '<strong>Chatbot:</strong> ' + escapeHtml(data.response || 'No valid response received.');
+                } catch (error) {
+                    pendingMessage.classList.remove('pending');
+                    if (error.name === 'AbortError') {
+                        pendingMessage.innerHTML = '<strong>Chatbot:</strong> This is taking longer than expected. Please try again in a moment.';
+                    } else {
+                        pendingMessage.innerHTML = '<strong>Chatbot:</strong> Error processing request.';
+                    }
+                } finally {
+                    clearTimeout(timeout);
+                    pendingRequest = null;
+                    setPending(false);
+                    userInput.focus();
+                }
+            }
+
+            sendButton.addEventListener('click', sendMessage);
+            clearButton.addEventListener('click', function() {
+                chatOutput.innerHTML = '';
+            });
+
+            userInput.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter' && !event.shiftKey) {
                     event.preventDefault();
                     sendMessage();
                 }

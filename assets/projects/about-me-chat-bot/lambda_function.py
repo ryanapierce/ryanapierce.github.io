@@ -20,6 +20,7 @@ CORS_HEADERS = {
 
 s3_client = boto3.client("s3")
 _openai_client = None
+_reference_data = None
 
 
 def get_openai_api_key():
@@ -58,6 +59,21 @@ def get_file_from_s3(file_name):
     except Exception as e:
         print(f"ERROR: Fetching {file_name} from S3 failed: {e}")
         return None
+
+
+def get_reference_data():
+    """Load S3 reference data once per warm Lambda container."""
+    global _reference_data
+    if _reference_data is None:
+        life_notes = get_file_from_s3(LIFE_NOTES_FILE)
+        resume_text = get_file_from_s3(RESUME_FILE)
+        if not life_notes or not resume_text:
+            return None
+        _reference_data = {
+            "life_notes": life_notes,
+            "resume_text": resume_text,
+        }
+    return _reference_data
 
 
 def response(status_code, body):
@@ -100,11 +116,8 @@ def lambda_handler(event, context):
         print("WARNING: Empty or missing query received")
         return response(400, {"error": "'query' field is required"})
 
-    # Load Resume & Life Notes from S3
-    life_notes = get_file_from_s3(LIFE_NOTES_FILE)
-    resume_text = get_file_from_s3(RESUME_FILE)
-
-    if not life_notes or not resume_text:
+    reference_data = get_reference_data()
+    if not reference_data:
         print("ERROR: Failed to load S3 data")
         return response(500, {"error": "Failed to load reference data from S3"})
 
@@ -114,10 +127,10 @@ def lambda_handler(event, context):
     Reference the following data but do not explicitly mention that it comes from stored files.
 
     Resume:
-    {resume_text}
+    {reference_data["resume_text"]}
 
     Life Notes:
-    {life_notes}
+    {reference_data["life_notes"]}
     """
 
     try:
