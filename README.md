@@ -70,7 +70,7 @@ This portfolio is built using HTML5 UP's Stellar template, which provides a vibr
 A conversational AI chatbot trained on my background, built using AWS Lambda, API Gateway, and OpenAI API. The chatbot provides responses based on structured data from my resume and life notes.
 
 - **Live Demo**: [Interact with the chatbot](https://ryanpierce.dev/assets/projects/about-me-chat-bot/templates/ask_about_me_chat.html)
-- **Source Code**: [GitHub Repository](https://github.com/ryanapierce/ryanapierce.github.io/tree/7bf3353f378c46907483b118f185d6afbeeb55a9/assets/projects/about-me-chat-bot)
+- **Source Code**: [GitHub Repository](https://github.com/ryanapierce/ryanapierce.github.io/tree/main/assets/projects/about-me-chat-bot)
 
 ## Contact
 

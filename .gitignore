@@ -1,8 +1,16 @@
-assets/projects/about_me_chatbot/lambda_package/*
 .DS_Store
+**/.DS_Store
+
+__pycache__/
+*.py[cod]
+
+.env
+.env.*
+
 .venv/
 venv/
+**/.venv/
+**/venv/
+
 lambda_package/
-assets/projects/about-me-chat-bot/lambda_package/*
-assets/projects/mjl/lambda_package/*
-# Ignore all files in the lambda_package directory
+**/lambda_package/
