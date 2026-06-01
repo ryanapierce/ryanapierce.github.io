@@ -8,7 +8,9 @@ const CONFIG = {
         fullName: "Ryan A. Pierce",
         email: "ryanapierce.work@gmail.com",
         phone: "(248) 378-7139",
-        location: "Berkley, MI, USA",
+        phoneHref: "2483787139",
+        location: "Berkley, MI",
+        locationFull: "Berkley, MI, USA",
         linkedin: "https://www.linkedin.com/in/ryan-a-pierce",
         github: "https://github.com/ryanapierce",
         resumePDF: "assets/resumes/Ryan_Pierce_Resume.pdf"
@@ -31,11 +33,12 @@ const CONFIG = {
 
     // Color Scheme
     colors: {
-        primary: "#2c7da0",
-        secondary: "#012a4a",
-        accent: "#bdd5ea",
-        text: "#ffffff",
-        textSecondary: "#333333"
+        primary: "#1f2937",
+        secondary: "#0f172a",
+        accent: "#f59e0b",
+        accentSoft: "#fbbf24",
+        text: "#f8fafc",
+        textSecondary: "#5c6470"
     },
 
     // Chatbot Configuration
@@ -69,7 +72,7 @@ const CONFIG = {
         aboutMeChatbot: {
             title: "About Me Chatbot",
             url: "assets/projects/about-me-chat-bot/templates/ask_about_me_chat.html",
-            github: "https://github.com/ryanapierce/about-me-chat-bot",
+            github: "https://github.com/ryanapierce/ryanapierce.github.io/tree/main/assets/projects/about-me-chat-bot",
             image: "assets/images/openai.jpg"
         },
         pairTradingAlgorithm: {
@@ -77,6 +80,16 @@ const CONFIG = {
             url: "assets/projects/Mean_Reversion_Analysis_Project_ Milestone_1.pdf",
             github: "https://github.com/ryanapierce/pair-trading-algorithm",
             image: "assets/images/um.svg"
+        },
+        rDashboard: {
+            title: "R Dashboard",
+            url: "assets/projects/R/Dashboard_Example.html",
+            image: "assets/images/ford.png"
+        },
+        etlPipelineDemo: {
+            title: "ETL Pipeline Demo",
+            url: "assets/projects/pipeline_demo/etl_pipeline_demo/README.md",
+            image: "assets/images/openai.jpg"
         }
     },
 
@@ -88,6 +101,8 @@ const CONFIG = {
         templateUrl: "https://html5up.net"
     }
 };
+
+window.CONFIG = CONFIG;
 
 // Make CONFIG available globally
 if (typeof module !== 'undefined' && module.exports) {

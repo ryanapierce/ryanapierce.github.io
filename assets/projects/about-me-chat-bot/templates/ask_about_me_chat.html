@@ -3,95 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me Chatbot - Ryan Pierce</title>
-    <link rel="stylesheet" href="../static/css/main.css">
-    <link rel="stylesheet" href="../static/css/noscript.css">
+    <title>About Me Chatbot | Ryan Pierce</title>
+    <meta name="description" content="Interactive AI chatbot demo that answers questions about Ryan Pierce's professional background, projects, and experience.">
     <meta http-equiv="Content-Security-Policy" content="connect-src 'self' https://8y33u4e087.execute-api.us-east-1.amazonaws.com;">
     <link rel="preconnect" href="https://8y33u4e087.execute-api.us-east-1.amazonaws.com">
+    <meta property="og:title" content="About Me Chatbot | Ryan Pierce">
+    <meta property="og:description" content="Serverless AI chatbot demo using AWS Lambda, API Gateway, S3, and OpenAI.">
+    <meta property="og:image" content="https://ryanpierce.dev/assets/images/openai.jpg">
     <meta property="og:image:secure_url" content="https://ryanpierce.dev/assets/images/openai.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="About Me Chatbot">
     <meta property="og:image:type" content="image/jpeg">
-    <style>
-        .disclaimer {
-            font-size: 0.8em;
-            color: #777;
-        }
-        .button {
-            margin-right: 8px;
-        }
-        .chat-message {
-            margin: 0 0 0.8em 0;
-        }
-        .chat-message.pending {
-            color: #777;
-            font-style: italic;
-        }
-        .button[disabled] {
-            cursor: wait;
-            opacity: 0.65;
-        }
-
-        @media (max-width: 600px) {
-            .actions.stacked .button {
-                -ms-transform: scale(.9); /* IE 9 */
-                -webkit-transform: scale(.9); /* Chrome, Safari, Opera */
-                transform: scale(.9)
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../../../css/main.css">
+    <noscript><link rel="stylesheet" href="../../../css/noscript.css"></noscript>
 </head>
-<body>
+<body class="is-preload">
     <div id="wrapper">
-        <header id="header">
-            <h1>Chat with Ryan Pierce's Experience Bot</h1>
-            <p>Ask about my experience and background.</p>
+        <header id="header" class="page-hero">
+            <p class="eyebrow">AI Project Demo</p>
+            <h1>About Me Chatbot</h1>
+            <p>Ask a question about my experience, projects, skills, education, or career background.</p>
         </header>
-        <div id="main">
-            <section id="content" class="main">
-                <textarea id="userInput" rows="4" placeholder="Type your question here..."></textarea>
-                <br>
-                <button id="sendButton" class="button primary">Ask</button>
-                <button id="clearButton" class="button primary">Clear Chat</button>
-                <div id="chatOutput"></div>
-                <p class="disclaimer">
-                    <br>
-                    <strong>Disclaimer:</strong> This chatbot is powered by AI and provides responses based on notes and files provided by Ryan Pierce.
-                    The information provided by the chatbot is for informational purposes only and may not be entirely accurate or up-to-date. <a href="https://github.com/ryanapierce/ryanapierce.github.io/tree/main/assets/projects/about-me-chat-bot">Source Code.</a>
-                </p>
-            </section>
-            <ul class="actions stacked">
-                <li>
-                    <a href="https://ryanpierce.dev/index.html" class="button primary">Return to Homepage</a>
-                    <a href="https://ryanpierce.dev/projects.html" class="button primary">Return to Projects</a>
-                </li>
+
+        <nav id="nav">
+            <ul>
+                <li><a href="../../../../index.html#experience">Experience</a></li>
+                <li><a href="../../../../index.html#skills">Skills</a></li>
+                <li><a href="../../../../projects.html" class="active">Projects</a></li>
+                <li><a href="../../../../index.html#education">Education</a></li>
+                <li><a href="../../../../index.html#contact">Contact</a></li>
+                <li><a href="../../../resumes/Ryan_Pierce_Resume.pdf" data-admin-resume-href>Resume</a></li>
             </ul>
+        </nav>
+
+        <div id="main">
+            <section id="content" class="main executive-section chatbot-layout">
+                <div class="chatbot-panel reveal">
+                    <div class="chatbot-header">
+                        <div>
+                            <p class="eyebrow">Interactive Assistant</p>
+                            <h2>Ask Ryan's Experience Bot</h2>
+                        </div>
+                        <span class="status-pill">AWS Lambda + OpenAI</span>
+                    </div>
+                    <label for="userInput" class="chat-label">Your question</label>
+                    <textarea id="userInput" rows="4" placeholder="Try: What data engineering projects has Ryan worked on?"></textarea>
+                    <ul class="prompt-list" aria-label="Suggested prompts">
+                        <li><button type="button" class="prompt-chip">Summarize Ryan's data engineering background.</button></li>
+                        <li><button type="button" class="prompt-chip">What automation experience does Ryan have?</button></li>
+                        <li><button type="button" class="prompt-chip">Which projects show AI or cloud skills?</button></li>
+                    </ul>
+                    <ul class="actions compact-actions">
+                        <li><button id="sendButton" class="button primary" type="button">Ask</button></li>
+                        <li><button id="clearButton" class="button secondary" type="button">Clear Chat</button></li>
+                    </ul>
+                    <div id="chatOutput" class="chat-output" aria-live="polite"></div>
+                    <p class="disclaimer">
+                        <strong>Note:</strong> This AI demo answers from Ryan-provided notes and files. Responses may be incomplete or out of date.
+                    </p>
+                </div>
+                <aside class="architecture-card reveal">
+                    <p class="eyebrow">How it works</p>
+                    <h2>Serverless project architecture</h2>
+                    <ul>
+                        <li>Static portfolio page sends the question to API Gateway.</li>
+                        <li>AWS Lambda loads structured reference data and calls OpenAI.</li>
+                        <li>Secrets Manager keeps the API key out of the frontend.</li>
+                        <li>S3 stores resume and background material used for context.</li>
+                    </ul>
+                    <ul class="tag-list">
+                        <li>AWS Lambda</li>
+                        <li>API Gateway</li>
+                        <li>S3</li>
+                        <li>OpenAI</li>
+                    </ul>
+                    <ul class="actions stacked">
+                        <li><a href="https://github.com/ryanapierce/ryanapierce.github.io/tree/main/assets/projects/about-me-chat-bot" class="button secondary">Source Code</a></li>
+                        <li><a href="../../../../projects.html" class="button secondary">Back to Projects</a></li>
+                    </ul>
+                </aside>
+            </section>
         </div>
-        <footer id="footer">
-            <section>
-                <br><br>
+
+        <footer id="footer" class="site-footer">
+            <section id="contact">
+                <h2>Let us connect</h2>
+                <p>Want to discuss AI-enabled analytics, data products, or automation?</p>
                 <ul class="actions">
-                    <li><a href="../../../resumes/Ryan_Pierce_Resume.pdf" class="button secondary">Click here for printable resume</a></li>
+                    <li><a href="mailto:ryanapierce.work@gmail.com" class="button primary" data-admin-email-href>Email Me</a></li>
+                    <li><a href="../../../resumes/Ryan_Pierce_Resume.pdf" class="button secondary" data-admin-resume-href>Resume</a></li>
                 </ul>
             </section>
             <section>
                 <dl class="alt">
-                    <h2>Ryan Pierce</h2>
+                    <h2 data-admin-name>Ryan Pierce</h2>
                     <dt>Location</dt>
-                    <dd>Berkley, MI &bull; USA</dd>
+                    <dd data-admin-location-full>Berkley, MI, USA</dd>
                     <dt>Phone</dt>
-                    <dd><a href="tel:2483787139">(248) 378-7139</a></dd>
+                    <dd><a href="tel:2483787139" data-admin-phone-href data-admin-phone>(248) 378-7139</a></dd>
                     <dt>Email</dt>
-                    <dd><a href="mailto:ryanapierce.work@gmail.com">ryanapierce.work@gmail.com</a></dd>
-                    <a href="https://www.linkedin.com/in/ryan-a-pierce" class="icon brands fa-linkedin alt"><span class="label">LinkedIn</span></a>
-                    <a href="https://github.com/ryanapierce" class="icon brands fa-github alt"><span class="label">GitHub</span></a>
+                    <dd><a href="mailto:ryanapierce.work@gmail.com" data-admin-email-href data-admin-email>ryanapierce.work@gmail.com</a></dd>
+                    <a href="https://www.linkedin.com/in/ryan-a-pierce" class="icon brands fa-linkedin alt" data-admin-linkedin-href><span class="label">LinkedIn</span></a>
+                    <a href="https://github.com/ryanapierce" class="icon brands fa-github alt" data-admin-github-href><span class="label">GitHub</span></a>
                 </dl>
             </section>
-            <p class="copyright">&copy; Ryan Pierce. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+            <p class="copyright" data-site-copyright>&copy; Ryan Pierce. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
         </footer>
     </div>
 
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../js/jquery.scrollex.min.js"></script>
+    <script src="../../../js/jquery.scrolly.min.js"></script>
+    <script src="../../../js/browser.min.js"></script>
+    <script src="../../../js/breakpoints.min.js"></script>
+    <script src="../../../js/util.js"></script>
+    <script src="../../../js/config.js"></script>
+    <script src="../../../js/site-admin.js"></script>
+    <script src="../../../js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const BACKEND_URL = "https://8y33u4e087.execute-api.us-east-1.amazonaws.com/prod/chat";
@@ -99,6 +128,7 @@
             const clearButton = document.getElementById('clearButton');
             const userInput = document.getElementById('userInput');
             const chatOutput = document.getElementById('chatOutput');
+            const promptButtons = document.querySelectorAll('.prompt-chip');
             let pendingRequest = null;
 
             function escapeHtml(text) {
@@ -124,14 +154,17 @@
             function setPending(isPending) {
                 sendButton.disabled = isPending;
                 userInput.disabled = isPending;
+                promptButtons.forEach(function(button) {
+                    button.disabled = isPending;
+                });
                 sendButton.textContent = isPending ? 'Asking...' : 'Ask';
             }
-    
+
             async function sendMessage() {
                 const question = userInput.value.trim();
                 if (!question || pendingRequest) {
                     if (!question) {
-                        alert('Please enter a question or comment.');
+                        userInput.focus();
                     }
                     return;
                 }
@@ -184,7 +217,12 @@
             clearButton.addEventListener('click', function() {
                 chatOutput.innerHTML = '';
             });
-
+            promptButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    userInput.value = button.textContent;
+                    userInput.focus();
+                });
+            });
             userInput.addEventListener('keydown', function(event) {
                 if (event.key === 'Enter' && !event.shiftKey) {
                     event.preventDefault();
@@ -192,6 +230,6 @@
                 }
             });
         });
-    </script>    
+    </script>
 </body>
 </html>

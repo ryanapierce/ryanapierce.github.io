@@ -45,9 +45,13 @@
 					});
 
 			// Links.
-				var $nav_a = $nav.find('a');
+				var $nav_a = $nav.find('a'),
+					$nav_internal = $nav_a.filter(function() {
+						var href = $(this).attr('href');
+						return href && href.charAt(0) == '#';
+					});
 
-				$nav_a
+				$nav_internal
 					.scrolly({
 						speed: 1000,
 						offset: function() { return $nav.height(); }
@@ -75,6 +79,12 @@
 
 						var	$this = $(this),
 							id = $this.attr('href'),
+							$section;
+
+						// Not an on-page section link? Bail.
+							if (!id || id.charAt(0) != '#')
+								return;
+
 							$section = $(id);
 
 						// No section for this link? Bail.
@@ -119,5 +129,32 @@
 		$('.scrolly').scrolly({
 			speed: 1000
 		});
+
+	// Subtle reveal animations.
+		var revealItems = document.querySelectorAll('.reveal');
+
+		if ('IntersectionObserver' in window && revealItems.length > 0) {
+			var revealObserver = new IntersectionObserver(function(entries, observer) {
+				entries.forEach(function(entry) {
+					if (!entry.isIntersecting)
+						return;
+
+					entry.target.classList.add('is-visible');
+					observer.unobserve(entry.target);
+				});
+			}, {
+				threshold: 0.12,
+				rootMargin: '0px 0px -40px 0px'
+			});
+
+			revealItems.forEach(function(item) {
+				revealObserver.observe(item);
+			});
+		}
+		else {
+			revealItems.forEach(function(item) {
+				item.classList.add('is-visible');
+			});
+		}
 
 })(jQuery);
